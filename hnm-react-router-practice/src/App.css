@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
   margin: 20px;
+  cursor: pointer;
 }
 
 .nav-section {
@@ -40,4 +41,18 @@
   height : 22px;
   margin-left: 5px;
   padding-left : 5px;
+}
+
+.login-form {
+  width:40em;
+}
+
+.login-area {
+  display: flex;
+  justify-content: center;
+}
+
+.product-img {
+  display: flex;
+  justify-content: end;
 }
