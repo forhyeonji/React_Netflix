@@ -15,6 +15,10 @@ const Navbar = () => {
         navigate('/login');
     }
 
+    const search = () => {
+        console.log("key press")
+    }
+
     return (
     <div>
       <div>
@@ -41,7 +45,7 @@ const Navbar = () => {
         
             <div className="search-box">
                 <FontAwesomeIcon icon={faSearch} className="search-icon"/>
-                <input type="text" placeholder="제품검색"/>
+                <input type="text" onKeyDown={search} placeholder="제품검색"/>
             </div>
       </div>
     </div>
