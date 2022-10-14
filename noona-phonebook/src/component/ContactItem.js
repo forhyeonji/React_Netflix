@@ -1,22 +1,24 @@
-import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import React from "react";
+import { Row, Col } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
-const ContactItem = ({item}) => {
+const ContactItem = ({ item }) => {
   return (
-    <Row>
-        <Col lg={1}>
-            <img width={50} src='https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'></img>
+    <div className="contact-item">
+      <Row>
+        <Col lg="2">
+          <img
+            className="profile"
+            src="https://s3-ap-northeast-1.amazonaws.com/ojuz-attach/profile/images/GioChkhaidze"
+          />
         </Col>
-        <Col lg={11}>
-            <div>
-                {item.name}
-            </div>
-            <div>
-                {item.phoneNumber}
-            </div>
+        <Col lg="10">
+          <h4>{item.name}</h4>
+          <p>{item.phoneNumber}</p>
         </Col>
-    </Row>
-  )
-}
+      </Row>
+    </div>
+  );
+};
 
-export default ContactItem
+export default ContactItem;

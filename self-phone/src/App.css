@@ -1,0 +1,9 @@
+.title {
+  text-align: center;
+  margin : 50px;
+}
+
+.contact-item{
+  border:1px solid gainsboro;
+  padding:12px;
+}
