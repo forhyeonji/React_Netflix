@@ -1,3 +1,5 @@
+import {productActions} from "../reducer/productReducer"
+
 // 미들웨어 기능별 함수들
 function getProducts(searchQuery){
 
@@ -6,7 +8,8 @@ function getProducts(searchQuery){
         let response = await fetch(url);
         let data = await response.json();
         console.log("데이타 확인?  ",data);
-        dispatch({type : "GET_PRODUCT_SUCCESS", payload : { data } })
+        // dispatch({type : "GET_PRODUCT_SUCCESS", payload : { data } });
+        dispatch(productActions.getProducts({ data })); //매개변수는 알아서 payload 아래에 들어감
     };
 
 
