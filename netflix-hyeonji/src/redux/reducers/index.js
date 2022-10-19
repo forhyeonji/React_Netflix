@@ -4,3 +4,9 @@
 // key : 리듀서 이름,
 
 
+// import { combineReducers } from "redux";
+// import movieReducer from "./movieReducer";
+
+// export default combineReducers({
+//     move : movieReducer,
+// })
