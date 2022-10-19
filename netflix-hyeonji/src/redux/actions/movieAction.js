@@ -22,9 +22,13 @@ function getMovies(){
             upComingApi
         ]);
         
-        dispatch(movieActions.getPopularMovies(popularMovies.data));
-        dispatch(movieActions.getTopRatedMovies(topRatedMovies.data));
-        dispatch(movieActions.getUpcomingMovies(upcomingMovies.data));
+        console.log("popularMovies!!!",popularMovies);
+        console.log("topRatedMovies!!!",topRatedMovies);
+        console.log("upcomingMovies!!!",upcomingMovies);
+
+        dispatch(movieActions.getPopularMovies({popularMovies}));
+        dispatch(movieActions.getTopRatedMovies({topRatedMovies}));
+        dispatch(movieActions.getUpcomingMovies({upcomingMovies}));
 
 
         
