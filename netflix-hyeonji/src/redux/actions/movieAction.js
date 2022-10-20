@@ -1,12 +1,13 @@
 import api from "../api";
 import { movieActions } from "../reducers/movieReducer";
 
+
 const API_KEY=process.env.REACT_APP_API_KEY
 function getMovies(){
     return async(dispatch)=>{
         try{
-            
-        }
+
+        dispatch(movieActions.getMoviesRequest());
 
 
         const popularMovieApi = api.get(
@@ -26,17 +27,19 @@ function getMovies(){
             topRatedApi,
             upComingApi
         ]);
-        
-        console.log("popularMovies!!!",popularMovies);
-        console.log("topRatedMovies!!!",topRatedMovies);
-        console.log("upcomingMovies!!!",upcomingMovies);
+
 
         dispatch(movieActions.getPopularMovies({popularMovies}));
         dispatch(movieActions.getTopRatedMovies({topRatedMovies}));
         dispatch(movieActions.getUpcomingMovies({upcomingMovies}));
 
+            
+        } catch(error){
 
-        
+        dispatch(movieActions.getMoviesFailure());
+
+        }
+
     }
 }
 

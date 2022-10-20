@@ -13,36 +13,28 @@ const movieSlice = createSlice({
     name : "movie",
     initialState,
     reducers:{
+        getMoviesRequest(state, action){
+            state.loading = true;
+        },
         getPopularMovies(state, action){
-            state.popularMovies = action.payload.popularMovies
+            state.popularMovies = action.payload.popularMovies;
+            state.loading = false;
         },
         getTopRatedMovies(state, action){
-            state.topRatedMovies = action.payload.topRatedMovies
+            state.topRatedMovies = action.payload.topRatedMovies;
+            state.loading = false;
         },
         getUpcomingMovies(state, action){
-            state.upcomingMovies = action.payload.upcomingMovies
+            state.upcomingMovies = action.payload.upcomingMovies;
+            state.loading = false;
+        },
+        getMoviesFailure(state, action){
+            state.loading = false;
         },
 
     },
 });
 
-
-// function movieReducer(state=initialState, action){
-//     let {type, payload} = action;
-//     switch(type){
-//         case "GET_MOVIES_SUCCESS":
-//             return {
-//                 ...state,
-//                 popularMovies : payload.popularMovies,
-//                 topRatedMovies : payload.topRatedMovies,
-//                 upcomingMovies : payload.upcomingMovies,
-//             };
-//         default :
-//             return {...state};
-
-//     }
-
-// }
 
 console.log("pppp", movieSlice);
 

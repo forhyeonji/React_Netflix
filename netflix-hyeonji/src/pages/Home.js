@@ -5,13 +5,13 @@ import { movieState } from '../redux/reducers/movieReducer'
 import movieReducer from '../redux/reducers/movieReducer'
 import Banner from '../components/Banner'
 import MovieSlide from '../components/MovieSlide'
-import ClipLoader from "react-spinners/ClipLoader";
+import { ClipLoader } from 'react-spinners'
 
 const Home = () => {
     const dispatch = useDispatch();
   
 
-    const { popularMovies, topRatedMovies, upcomingMovies } = useSelector(
+    const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(
         (state) => (state.movie)
       );
 
@@ -30,14 +30,18 @@ const Home = () => {
   //false: 데이터 도착 후, 에러났을 때
 
   if (loading){
-    return <ClipLoader color="#ffff" loading={loading} size={150} />
+    return(
+    <div className='spinner_box'>
+       <ClipLoader color="#ffff" loading={loading} size={150} />
+    </div>
+    )
   }
 
   
   return (
     <div>
        
-      {popularMovies.data && <Banner movie={popularMovies.data.results[15]} />}
+      <Banner movie={popularMovies.data.results[15]} />
 
       <h1>Popular Movie</h1>
       <MovieSlide movies={popularMovies}/>
