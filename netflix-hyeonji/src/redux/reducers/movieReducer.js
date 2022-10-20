@@ -5,6 +5,7 @@ let initialState={
     popularMovies :{},
     topRatedMovies : {},
     upcomingMovies : {},
+    loading : true,
 };
 
 
