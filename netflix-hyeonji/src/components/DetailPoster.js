@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom';
 const DetailPoster = ({movies}) => {
     console.log("포스터!!!",movies);
     const params = useParams();
-    const imgUrl = movies.results.find(item => item.id==params.id).backdrop_path;
+    const imgUrl = movies.results.find(item => item.id==params.id).poster_path;
     console.log("과연 찾았니??", imgUrl)
 
     return (
@@ -24,10 +24,9 @@ const DetailPoster = ({movies}) => {
             style={{
             backgroundImage:
             "url("+
-            `https://www.themoviedb.org/t/p/w710_and_h400_multi_faces${imgUrl}`+")"}}
+            `https://image.tmdb.org/t/p/original//${imgUrl}`+")"}}
             >
-            
-            
+          
             <p>{params.id}</p>
         </div>
     </div>
