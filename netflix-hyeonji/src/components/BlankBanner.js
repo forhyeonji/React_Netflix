@@ -9,9 +9,6 @@ const BlankBanner = () => {
             ")"
             }}
     >
-        {/* <div className='blank_info'>
-            <span className='blank_title'>NETFLIX</span>
-        </div> */}
     </div>
   )
 }

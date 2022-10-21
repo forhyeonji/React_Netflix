@@ -1,11 +1,14 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
-
+import { useNavigate } from 'react-router-dom';
 const MovieCard = ({ item }) => {
-
+    const navigate = useNavigate();
     const { genreList } = useSelector(state=>state.movie)
-    
+    console.log("과연 아이템은?", item)
+    const goMovieDetail = () => {
+      navigate( `/movies/${item.id}`)
+  }
   
   return (
     <div
@@ -16,7 +19,8 @@ const MovieCard = ({ item }) => {
           `https://www.themoviedb.org/t/p/w710_and_h400_multi_faces${item.backdrop_path}` +
           ")",
       }}
-    >
+      onClick={goMovieDetail}
+     >
       <div className="overlay">
             <h2>{item.title}</h2>
             <div>

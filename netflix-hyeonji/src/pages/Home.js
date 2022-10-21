@@ -7,9 +7,9 @@ import Banner from '../components/Banner'
 import MovieSlide from '../components/MovieSlide'
 import { ClipLoader } from 'react-spinners'
 
+
 const Home = () => {
     const dispatch = useDispatch();
-  
 
     const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(
         (state) => (state.movie)
