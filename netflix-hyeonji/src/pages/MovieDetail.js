@@ -6,25 +6,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import DetailPoster from '../components/DetailPoster'
 
 
-const MovieDetail = () => {
+const MovieDetail = ({item}) => {
   const dispatch = useDispatch();
-  const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(
-    (state) => (state.movie)
-  );
+  // const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(
+  //   (state) => (state.movie)
+  // );
   
-  console.log("디테일 데이터",popularMovies)
+  // 프롭스로 이어지는거 잘 보기
+  
+
 
   useEffect(()=>{
     dispatch(movieAction.getMovies());
   },[])
-
+  console.log("!!진짜 희망 이어진희망!!",item);
   return (
     <div>
       <BlankBanner />
       <Container>
         <Row>
           <Col>
-           {popularMovies && <DetailPoster movies={popularMovies}/>}
+           {item && <DetailPoster item={item}/>}
           </Col>
           <Col>
           

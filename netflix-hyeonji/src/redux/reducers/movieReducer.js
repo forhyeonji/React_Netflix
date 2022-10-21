@@ -17,18 +17,20 @@ const movieSlice = createSlice({
         getMoviesRequest(state, action){
             state.loading = true;
         },
-        getPopularMovies(state, action){
+        getMovieSuccess(state, action){
             state.popularMovies = action.payload.popularMovies.data;
-            state.loading = false;
-        },
-        getTopRatedMovies(state, action){
             state.topRatedMovies = action.payload.topRatedMovies.data;
-            state.loading = false;
-        },
-        getUpcomingMovies(state, action){
             state.upcomingMovies = action.payload.upcomingMovies.data;
             state.loading = false;
         },
+        // getTopRatedMovies(state, action){
+        //     state.topRatedMovies = action.payload.topRatedMovies.data;
+        //     state.loading = false;
+        // },
+        // getUpcomingMovies(state, action){
+        //     state.upcomingMovies = action.payload.upcomingMovies.data;
+        //     state.loading = false;
+        // },
         getMoviesFailure(state, action){
             state.loading = false;
         },

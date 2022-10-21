@@ -37,9 +37,7 @@ function getMovies(){
         console.log("장르",genreList.data);
         
 
-        dispatch(movieActions.getPopularMovies({popularMovies}));
-        dispatch(movieActions.getTopRatedMovies({topRatedMovies}));
-        dispatch(movieActions.getUpcomingMovies({upcomingMovies}));
+        dispatch(movieActions.getMovieSuccess({popularMovies, topRatedMovies, upcomingMovies}));
         dispatch(movieActions.getGenreList({genreList}));
 
             
