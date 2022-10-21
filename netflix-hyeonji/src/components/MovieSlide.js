@@ -25,12 +25,14 @@ const responsive = {
 
 const MovieSlide = ({ movies }) => {
   console.log("movies", movies);
+
   return (
     <div>
-      <Carousel responsive={responsive}>
+      <Carousel responsive={responsive} autoPlay={true}>
         {movies.data.results.map((item)=>(
           <MovieCard item={item} />
         ))}
+      
       </Carousel>
     </div>
   );

@@ -22,16 +22,25 @@ function getMovies(){
             `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
             );
 
-        let [popularMovies, topRatedMovies, upcomingMovies] = await Promise.all([
+        const genreApi=api.get(
+            `/genre/movie/list?api_key=${API_KEY}&language=en-US`
+            );
+
+
+        let [popularMovies, topRatedMovies, upcomingMovies, genreList] = await Promise.all([
             popularMovieApi,
             topRatedApi,
-            upComingApi
+            upComingApi,
+            genreApi,
         ]);
 
+        console.log("장르",genreList.data);
+        
 
         dispatch(movieActions.getPopularMovies({popularMovies}));
         dispatch(movieActions.getTopRatedMovies({topRatedMovies}));
         dispatch(movieActions.getUpcomingMovies({upcomingMovies}));
+        dispatch(movieActions.getGenreList({genreList}));
 
             
         } catch(error){
