@@ -63,3 +63,40 @@ body {
     height: 100%;
 }
 
+
+/* ---- 디테일 ---- */
+
+/* .blank_banner{
+    height: 400px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.blank_banner{
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+/* .blank_banner::before {
+    position : absolute;
+    left:0;
+    width:100%;
+    height: 600px;
+    content:'';
+    background: linear-gradient(to left, black, transparent); 
+}*/
+
+
+.blank_info{
+    z-index: 1;
+}
+
+.blank_title{
+    font-size: 70px;
+}

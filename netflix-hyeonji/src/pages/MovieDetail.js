@@ -1,8 +1,12 @@
 import React from 'react'
+import BlankBanner from '../components/BlankBanner'
 
 const MovieDetail = () => {
   return (
-    <div>MovieDetail</div>
+    <div>
+      <BlankBanner/>
+      MovieDetail
+    </div>
   )
 }
 

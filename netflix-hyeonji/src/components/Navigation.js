@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
       <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#"><img src='https://www.edigitalagency.com.au/wp-content/uploads/Netflix-logo-red-black-png.png' width={90} /></Navbar.Brand>
+        <Navbar.Brand href="#"><img src='https://www.edigitalagency.com.au/wp-content/uploads/Netflix-logo-red-black-png.png' width={100} /></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
