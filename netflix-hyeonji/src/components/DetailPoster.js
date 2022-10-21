@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom';
 const DetailPoster = ({movies}) => {
     console.log("포스터!!!",movies);
     const params = useParams();
-    const imgUrl = movies.data.results.find(item => item.id==params.id).backdrop_path;
+    const imgUrl = movies.results.find(item => item.id==params.id).backdrop_path;
     console.log("과연 찾았니??", imgUrl)
 
     return (

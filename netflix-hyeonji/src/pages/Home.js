@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <div>
        
-      <Banner movie={popularMovies.data.results[15]} />
+      <Banner movie={popularMovies.results[15]} />
 
       <h1>Popular Movie</h1>
       <MovieSlide movies={popularMovies}/>

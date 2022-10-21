@@ -24,7 +24,7 @@ const MovieDetail = () => {
       <Container>
         <Row>
           <Col>
-           {popularMovies.data && <DetailPoster movies={popularMovies}/>}
+           {popularMovies && <DetailPoster movies={popularMovies}/>}
           </Col>
           <Col>
           

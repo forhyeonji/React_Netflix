@@ -18,15 +18,15 @@ const movieSlice = createSlice({
             state.loading = true;
         },
         getPopularMovies(state, action){
-            state.popularMovies = action.payload.popularMovies;
+            state.popularMovies = action.payload.popularMovies.data;
             state.loading = false;
         },
         getTopRatedMovies(state, action){
-            state.topRatedMovies = action.payload.topRatedMovies;
+            state.topRatedMovies = action.payload.topRatedMovies.data;
             state.loading = false;
         },
         getUpcomingMovies(state, action){
-            state.upcomingMovies = action.payload.upcomingMovies;
+            state.upcomingMovies = action.payload.upcomingMovies.data;
             state.loading = false;
         },
         getMoviesFailure(state, action){
