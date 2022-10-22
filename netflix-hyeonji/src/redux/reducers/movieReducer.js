@@ -23,14 +23,7 @@ const movieSlice = createSlice({
             state.upcomingMovies = action.payload.upcomingMovies.data;
             state.loading = false;
         },
-        // getTopRatedMovies(state, action){
-        //     state.topRatedMovies = action.payload.topRatedMovies.data;
-        //     state.loading = false;
-        // },
-        // getUpcomingMovies(state, action){
-        //     state.upcomingMovies = action.payload.upcomingMovies.data;
-        //     state.loading = false;
-        // },
+
         getMoviesFailure(state, action){
             state.loading = false;
         },

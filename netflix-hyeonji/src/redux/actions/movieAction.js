@@ -34,6 +34,7 @@ function getMovies(){
             genreApi,
         ]);
 
+        console.log("오리지널 데이터",popularMovies);
         console.log("장르",genreList.data);
         
 
