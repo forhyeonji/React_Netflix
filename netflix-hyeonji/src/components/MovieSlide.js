@@ -24,8 +24,8 @@ const responsive = {
 };
 
 const MovieSlide = ({ movies }) => {
-  console.log("movies", movies);
-
+  console.log("111movies", movies);
+  
   return (
     <div>
       <Carousel responsive={responsive} autoPlay={true}>
