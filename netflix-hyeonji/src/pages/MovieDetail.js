@@ -7,8 +7,8 @@ const MovieDetail = () => {
 
   const location=useLocation();
   console.log("로케이션션션", location.state);
-  const { posterUrl } = location.state;
-
+  const { item } = location.state;
+  console.log("전달된STATE제목?", item.title)
 
   return (
     <div>
@@ -21,7 +21,7 @@ const MovieDetail = () => {
             style={{
             backgroundImage:
             "url("+
-            `https://image.tmdb.org/t/p/original//${posterUrl}`+")"}}
+            `https://image.tmdb.org/t/p/original//${item.poster_path}`+")"}}
             >
 
             </div>

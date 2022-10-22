@@ -18,7 +18,7 @@ const MovieCard = ({ item }) => {
     const goMovieDetail = () => { 
       navigate(
         `/movies/${item.id}`,
-        {state:{posterUrl:posterUrl}}
+        {state:{item}}
         )
      }
   
