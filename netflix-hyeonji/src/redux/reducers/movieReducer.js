@@ -7,6 +7,7 @@ let initialState={
     upcomingMovies : {},
     loading : true,
     genreList : [],
+
 };
 
 

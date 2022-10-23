@@ -3,13 +3,35 @@ import BlankBanner from '../components/BlankBanner';
 import {Container, Row, Col} from "react-bootstrap";
 import { useLocation } from 'react-router-dom';
 import { Badge } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+
 
 const MovieDetail = () => {
 
   const location=useLocation();
-  console.log("로케이션션션", location.state);
   const { item } = location.state;
-  console.log("전달된STATE제목?", item.title)
+  const paramsId = useParams();
+  const params=paramsId.id;
+
+
+  console.log("파라미터=", params);
+  const API_KEY=process.env.REACT_APP_API_KEY;
+  console.log("api키!!", API_KEY)
+
+
+  const getDetailMovies = async()=>{
+    let url = `https://api.themoviedb.org/3/movie/${params}?api_key=${API_KEY}&language=en-US`;
+    console.log("머머머",url)
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log("왔니???",data);
+  }
+
+  useEffect(()=>{
+    getDetailMovies();
+  },[params])
+
+
 
   return (
     <div>
