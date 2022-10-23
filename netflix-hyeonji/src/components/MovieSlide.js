@@ -32,7 +32,6 @@ const MovieSlide = ({ movies }) => {
         {movies.results.map((item)=>(
           <MovieCard item={item} />
         ))}
-      
       </Carousel>
     </div>
   );

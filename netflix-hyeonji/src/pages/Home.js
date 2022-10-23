@@ -6,6 +6,7 @@ import movieReducer from '../redux/reducers/movieReducer'
 import Banner from '../components/Banner'
 import MovieSlide from '../components/MovieSlide'
 import { ClipLoader } from 'react-spinners'
+import { Container } from 'react-bootstrap'
 
 
 const Home = () => {
@@ -41,15 +42,18 @@ const Home = () => {
   return (
     <div>
        
-      <Banner movie={popularMovies.results[0]} />
+          <Banner movie={popularMovies.results[0]} />
+          
+      <div className='main_slide'>
+          <h1>Popular Movie</h1>
+          <MovieSlide movies={popularMovies}/>
 
-      <h1>Popular Movie</h1>
-      <MovieSlide movies={popularMovies}/>
-      <h1>Top rated Movie</h1>
-      <MovieSlide movies={topRatedMovies}/>
-      <h1>Upcoming Movie</h1>
-      <MovieSlide movies={upcomingMovies}/>
-
+          <h1>Top rated Movie</h1>
+          <MovieSlide movies={topRatedMovies}/>
+          
+          <h1>Upcoming Movie</h1>
+          <MovieSlide movies={upcomingMovies}/>
+      </div>
     
     </div>
   )
