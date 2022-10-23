@@ -16,12 +16,10 @@ const MovieDetail = () => {
 
   console.log("파라미터=", params);
   const API_KEY=process.env.REACT_APP_API_KEY;
-  console.log("api키!!", API_KEY)
 
 
   const getDetailMovies = async()=>{
     let url = `https://api.themoviedb.org/3/movie/${params}?api_key=${API_KEY}&language=en-US`;
-    console.log("머머머",url)
     let response = await fetch(url);
     let data = await response.json();
     console.log("왔니???",data);
