@@ -10,6 +10,10 @@ import { useDispatch, useSelector  } from 'react-redux';
 import ReviewBox from '../components/ReviewBox';
 import { detailAction } from '../redux/actions/detailAction';
 import { ClipLoader } from 'react-spinners'
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import RelatedMovie from '../components/RelatedMovie';
+
 
 const MovieDetail = () => {
 
@@ -102,7 +106,20 @@ const MovieDetail = () => {
         </Row>
         <Row>
           <Col>
-              <ReviewBox review={detailReviews} />
+
+            <Tabs
+            defaultActiveKey="profile"
+            id="uncontrolled-tab-example"
+            className="mb-3"
+            >
+                <Tab eventKey="profile" title="Reviews">
+                  <ReviewBox review={detailReviews} />
+                </Tab>
+                <Tab eventKey="home" title="Related Movies">
+                  <RelatedMovie/>
+                </Tab>
+          </Tabs>
+
           </Col>
         </Row>
       </Container>
