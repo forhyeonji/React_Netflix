@@ -8,10 +8,10 @@ const ReviewBox = ({review}) => {
 
   return (
     <div>
-    <h6 align="center">{review.results && review.results.length} COMMENTS</h6>
+    <h6 align="center">{review.results.length} COMMENTS</h6>
     <Container className='review_container'>
         <div  className='review_content'>
-        {review.results && review.results.map((item)=>(
+        {review.results.map((item)=>(
           <ReviewCard item={item} />
         ))}
         </div>
