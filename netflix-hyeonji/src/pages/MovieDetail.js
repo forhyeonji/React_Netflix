@@ -6,43 +6,46 @@ import { Badge } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers, faStar } from '@fortawesome/free-solid-svg-icons';
-import { useSelector  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import ReviewBox from '../components/ReviewBox';
+import { detailAction } from '../redux/actions/detailAction';
+import { ClipLoader } from 'react-spinners'
 
 const MovieDetail = () => {
+
+  const dispatch = useDispatch();
+
+  const { detailMovies, detailReviews, detailLoading } = useSelector(
+    (state)=>(state.detail)
+  );
 
   const { genreList } = useSelector(state=>state.movie)
   const location=useLocation();
   const { item } = location.state;
+
   const paramsId = useParams();
   const params=paramsId.id;
-
-
-  console.log("파라미터=", params);
   const API_KEY=process.env.REACT_APP_API_KEY;
 
-  const [detail, setDetail] = useState([]);
-  const getDetailMovies = async()=>{
-    let url = `https://api.themoviedb.org/3/movie/${params}?api_key=${API_KEY}&language=en-US`;
-    let response = await fetch(url);
-    let data = await response.json();
-    setDetail(data);
-  }
-  
-  const [review, setReview] = useState([]);
-  const getReviews = async()=>{
-    let url = `https://api.themoviedb.org/3/movie/${params}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log("리뷰를 보여줘!",data);
-    setReview(data);
-  }
+
+
 
   useEffect(()=>{
-    getDetailMovies();
-    getReviews();
-  },[params])
 
+    dispatch(detailAction.getDetails({params}));
+
+  },[])
+
+  if (detailLoading){
+    return(
+    <div className='spinner_box'>
+       <ClipLoader color="#ffff" detailLoading={detailLoading} size={150} />
+    </div>
+    )
+  }
+
+  console.log("aaa디테일",detailMovies);
+  console.log("bbb리뷰",detailReviews);
 
 
   return (
@@ -70,7 +73,7 @@ const MovieDetail = () => {
             
                 ))}
                 <p className='big_title'>{item.title}</p>
-                <h3>{detail.tagline}</h3>
+                <h3>{detailMovies.tagline}</h3>
             </div>
            
             <div>
@@ -90,16 +93,16 @@ const MovieDetail = () => {
 
 
             <div className='budget_box'>
-                <div><Badge pill bg="danger" className='detail_btn'>Budge</Badge>${detail.budget}</div>
-                <div><Badge pill bg="danger" className='detail_btn'>Revenue</Badge>${detail.revenue}</div>
+                <div><Badge pill bg="danger" className='detail_btn'>Budge</Badge>${detailMovies.budget}</div>
+                <div><Badge pill bg="danger" className='detail_btn'>Revenue</Badge>${detailMovies.revenue}</div>
                 <div><Badge pill bg="danger" className='detail_btn'>Release Day</Badge>{item.release_date}</div>
-                <div><Badge pill bg="danger" className='detail_btn'>Time</Badge>{detail.runtime}</div>
+                <div><Badge pill bg="danger" className='detail_btn'>Time</Badge>{detailMovies.runtime}</div>
             </div>
           </Col>
         </Row>
         <Row>
           <Col>
-              <ReviewBox review={review} />
+              <ReviewBox review={detailReviews} />
           </Col>
         </Row>
       </Container>

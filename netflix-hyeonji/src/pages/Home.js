@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
 import { movieAction } from '../redux/actions/movieAction'
 import { useDispatch, useSelector } from 'react-redux'
-import { movieState } from '../redux/reducers/movieReducer'
-import movieReducer from '../redux/reducers/movieReducer'
 import Banner from '../components/Banner'
 import MovieSlide from '../components/MovieSlide'
 import { ClipLoader } from 'react-spinners'
-import { Container } from 'react-bootstrap'
+
 
 
 const Home = () => {
