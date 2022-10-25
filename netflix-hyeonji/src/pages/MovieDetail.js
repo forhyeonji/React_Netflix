@@ -8,20 +8,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector  } from 'react-redux';
 import ReviewBox from '../components/ReviewBox';
+import RelatedBox from '../components/RelatedBox';
 import { detailAction } from '../redux/actions/detailAction';
 import { ClipLoader } from 'react-spinners'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import RelatedMovie from '../components/RelatedMovie';
+
 
 
 const MovieDetail = () => {
 
   const dispatch = useDispatch();
 
-  const { detailMovies, detailReviews, detailLoading } = useSelector(
+  const { detailMovies, detailReviews, detailLoading, relatedMovies} = useSelector(
     (state)=>(state.detail)
   );
+
 
   const { genreList } = useSelector(state=>state.movie)
   const location=useLocation();
@@ -50,6 +52,7 @@ const MovieDetail = () => {
 
   console.log("aaa디테일",detailMovies);
   console.log("bbb리뷰",detailReviews);
+  console.log("ccc관련",relatedMovies);
 
 
   return (
@@ -116,7 +119,7 @@ const MovieDetail = () => {
                   <ReviewBox review={detailReviews} />
                 </Tab>
                 <Tab eventKey="home" title="Related Movies">
-                  <RelatedMovie/>
+                  <RelatedBox related={relatedMovies}/>
                 </Tab>
           </Tabs>
 

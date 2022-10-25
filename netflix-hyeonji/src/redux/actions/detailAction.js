@@ -20,15 +20,19 @@ function getDetails({params}){
             const reviewApi = api.get(
                 `https://api.themoviedb.org/3/movie/${params}/reviews?api_key=${API_KEY}&language=en-US&page=1`
             );
-    
             
-            let [detailMovies, detailReviews] = await Promise.all([
+            const relatedApi = api.get(
+                `https://api.themoviedb.org/3/movie/${params}/recommendations?api_key=${API_KEY}&language=en-US&page=1`
+            );
+            
+            let [detailMovies, detailReviews, relatedMovies] = await Promise.all([
                 detailApi,
                 reviewApi,
+                relatedApi,
             ]);
 
             dispatch(detailActions.getDetailSuccess({detailMovies, detailReviews}));
-
+            dispatch(detailActions.getRelatedMovies({relatedMovies}))
 
         }catch(error){
 

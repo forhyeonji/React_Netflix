@@ -4,6 +4,7 @@ let initialState={
     detailMovies:{},
     detailReviews:{},
     detailLoading: true,
+    relatedMovies:{},
 };
 
 
@@ -22,8 +23,16 @@ const detailSlice = createSlice({
         getDetailFailure(state,action){
             state.detailLoading = false;
         },
+
+        getRelatedMovies(state,action){
+            state.relatedMovies = action.payload.relatedMovies.data;
+            state.detailLoading = false;
+        },
     },
 });
+
+
+console.log("ㅎㅎㅎㅎ", detailSlice);
 
 export const detailActions = detailSlice.actions;
 export default detailSlice.reducer;
