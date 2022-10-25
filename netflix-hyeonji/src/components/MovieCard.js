@@ -11,8 +11,8 @@ const MovieCard = ({ item }) => {
     const { genreList } = useSelector(state=>state.movie)
     console.log("222과연 아이템은?", item)
     console.log("아이템 안에", item.poster_path);
-    const posterUrl = item.poster_path;
-    console.log("posterUrl",posterUrl);
+    // const posterUrl = item.poster_path;
+    // console.log("posterUrl",posterUrl);
 
 
     const goMovieDetail = () => { 
@@ -31,7 +31,7 @@ const MovieCard = ({ item }) => {
           `https://www.themoviedb.org/t/p/w710_and_h400_multi_faces${item.backdrop_path}` +
           ")",
       }}
-      onClick={(item)=>goMovieDetail(item.poster_path)}
+      onClick={goMovieDetail}
      >
       <div className="overlay">
             <h2>{item.title}</h2>
