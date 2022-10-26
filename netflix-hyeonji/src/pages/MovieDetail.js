@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import BlankBanner from "../components/BlankBanner";
-import { Container, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Badge,
+  Modal,
+  Button,
+  Tab,
+  Tabs,
+} from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-import { Badge, Modal, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faStar, faFilm } from "@fortawesome/free-solid-svg-icons";
@@ -11,13 +19,17 @@ import ReviewBox from "../components/ReviewBox";
 import RelatedBox from "../components/RelatedBox";
 import { detailAction } from "../redux/actions/detailAction";
 import { ClipLoader } from "react-spinners";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import Youtube from "../components/Youtube";
 
 const MovieDetail = () => {
   const dispatch = useDispatch();
-  const { detailMovies, detailReviews, detailLoading, relatedMovies } =
-    useSelector((state) => state.detail);
+  const {
+    detailMovies,
+    detailReviews,
+    detailLoading,
+    relatedMovies,
+    movieVideos,
+  } = useSelector((state) => state.detail);
 
   const { genreList } = useSelector((state) => state.movie);
   const location = useLocation();
@@ -27,14 +39,12 @@ const MovieDetail = () => {
   const params = paramsId.id;
   const API_KEY = process.env.REACT_APP_API_KEY;
 
-
+  //모달
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     dispatch(detailAction.getDetails({ params }));
   }, [params]);
-
-
 
   if (detailLoading) {
     return (
@@ -47,10 +57,30 @@ const MovieDetail = () => {
   console.log("aaa디테일", detailMovies);
   console.log("bbb리뷰", detailReviews);
   console.log("ccc관련", relatedMovies);
+  console.log("ddd비디오", movieVideos);
 
   return (
     <div>
       <BlankBanner />
+        <div>
+            <Modal
+              show={show}
+              onHide={() => setShow(false)}
+              dialogClassName="modal-90w"
+              aria-labelledby="example-custom-modal-styling-title"
+              size="xl"
+              centered="true"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title id="example-custom-modal-styling-title">
+                  Custom Modal Styling
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body className="modalBox">
+               <Youtube movieVideos={movieVideos}/>
+              </Modal.Body>
+            </Modal>
+        </div>
       <Container>
         <Row>
           <Col>
@@ -64,6 +94,8 @@ const MovieDetail = () => {
               }}
             ></div>
           </Col>
+
+
           <Col>
             <div className="title_box">
               {item.genre_ids.map((id) => (
@@ -116,57 +148,34 @@ const MovieDetail = () => {
               </div>
             </div>
 
-            <div className="budget_box" onClick={() => setShow(true)}>
+            <div className="trailer_box" onClick={() => setShow(true)}>
+              
+              <span className="over"> 
               <FontAwesomeIcon icon={faFilm} />
-              <span> Watch Trailer</span>
+                <span>  Watch Trailer</span>
+              </span>
             </div>
-
-            <Modal
-              show={show}
-              onHide={() => setShow(false)}
-              dialogClassName="modal-90w"
-              aria-labelledby="example-custom-modal-styling-title"
-            >
-              <Modal.Header closeButton>
-                <Modal.Title id="example-custom-modal-styling-title">
-                  Custom Modal Styling
-                </Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <p>
-                  Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae unde
-                  commodi aspernatur enim, consectetur. Cumque deleniti temporibus
-                  ipsam atque a dolores quisquam quisquam adipisci possimus
-                  laboriosam. Quibusdam facilis doloribus debitis! Sit quasi quod
-                  accusamus eos quod. Ab quos consequuntur eaque quo rem! Mollitia
-                  reiciendis porro quo magni incidunt dolore amet atque facilis ipsum
-                  deleniti rem!
-                </p>
-              </Modal.Body>
-            </Modal>
-
-
-
           </Col>
         </Row>
 
         <Row>
           <Col>
-                <Tabs
-                  defaultActiveKey="profile"
-                  id="uncontrolled-tab-example"
-                  className="mb-3"
-                >
-                  <Tab eventKey="profile" title="Reviews">
-                    <ReviewBox review={detailReviews} />
-                  </Tab>
-                  <Tab eventKey="home" title="Related Movies">
-                    <RelatedBox related={relatedMovies} />
-                  </Tab>
-                </Tabs>
+            <Tabs
+              defaultActiveKey="profile"
+              id="uncontrolled-tab-example"
+              className="mb-3"
+            >
+              <Tab eventKey="profile" title="Reviews">
+                <ReviewBox review={detailReviews} />
+              </Tab>
+              <Tab eventKey="home" title="Related Movies">
+                <RelatedBox related={relatedMovies} />
+              </Tab>
+            </Tabs>
           </Col>
         </Row>
       </Container>
+      
     </div>
   );
 };

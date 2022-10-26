@@ -18,6 +18,7 @@ const detailSlice = createSlice({
         getDetailSuccess(state, action){
             state.detailMovies = action.payload.detailMovies.data;
             state.detailReviews = action.payload.detailReviews.data;
+            state.movieVideos = action.payload.movieVideos.data;
             state.detailLoading = false;
         },
         getDetailFailure(state,action){
