@@ -14,9 +14,6 @@ const Home = () => {
         (state) => (state.movie)
       );
 
-      console.log("데이터 제발제발",popularMovies)
-    
-
   useEffect(()=>{
     dispatch(movieAction.getMovies());
   },[])

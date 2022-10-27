@@ -9,11 +9,6 @@ const MovieCard = ({ item }) => {
 
 
     const { genreList } = useSelector(state=>state.movie)
-    console.log("222과연 아이템은?", item)
-    console.log("아이템 안에", item.poster_path);
-    // const posterUrl = item.poster_path;
-    // console.log("posterUrl",posterUrl);
-
 
     const goMovieDetail = () => { 
       navigate(
