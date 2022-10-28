@@ -21,6 +21,7 @@ import { detailAction } from "../redux/actions/detailAction";
 import { ClipLoader } from "react-spinners";
 import Youtube from "../components/Youtube";
 
+
 const MovieDetail = () => {
   const dispatch = useDispatch();
   const {

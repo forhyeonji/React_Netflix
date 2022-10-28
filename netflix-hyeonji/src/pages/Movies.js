@@ -23,7 +23,7 @@ const Movies = () => {
   }
 
   return (
-    <div>
+    <div className="movie-sidebar-wrapper">
       <Container>
         <Row>
           <Col lg={4}>
@@ -31,11 +31,15 @@ const Movies = () => {
             <SecondAccodian />
           </Col>
           <Col lg={8}>
-            {popularMovies.results.map((item)=>(
-              <BigMovieCard item={item}/>
-            ))}
-          
+ 
+            <Row>
+            {popularMovies.results.map((item)=>
+                 <BigMovieCard item={item}/>
+            )}
+            </Row>
+         
           </Col>
+          
         </Row>
       </Container>
     </div>
