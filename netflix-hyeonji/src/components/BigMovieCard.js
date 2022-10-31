@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers, faStar, faFilm } from "@fortawesome/free-solid-svg-icons";
 
 const BigMovieCard = ({ item }) => {
   const navigate = useNavigate();
@@ -36,13 +38,13 @@ const BigMovieCard = ({ item }) => {
                   ")",
               }}
               className="mini_poster">
-              </div>
 
               {/* 제목 */}
-              <div className="main_info">
-              <h1>{item.title}</h1>
-              </div>
+               <div className="main_info">
+                <h1>{item.title}</h1>
+               </div>
 
+              </div>
 
               {/* 장르뱃지 */}
               <div className="genre_btn_box">
@@ -51,9 +53,23 @@ const BigMovieCard = ({ item }) => {
                   {genreList.find((item) => item.id === id).name}
                 </Badge>
               ))}
-
-                    <p>{item.overview}</p>
               </div>
+
+              {/* 줄거리 */}
+              <div className="text">
+              <p>{item.overview}</p>
+              </div>
+
+              {/* 영화디테일뱃지 */}
+              <div className="detail_info">
+              <FontAwesomeIcon icon={faStar} className="icon" />
+              <span className="score">{item.vote_average}</span>
+
+              <FontAwesomeIcon icon={faUsers} className="people_icon" />
+              <span className="score">{item.popularity}</span>
+
+              <span className="adult">{item.adult ? "청불" : "Under 18"}</span>
+            </div>
               
               
 
