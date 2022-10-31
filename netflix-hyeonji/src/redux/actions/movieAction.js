@@ -6,7 +6,7 @@ import { movieActions } from "../reducers/movieReducer";
 const API_KEY=process.env.REACT_APP_API_KEY
 
 
-function getMovies(){
+function getMovies({ currentpage }){
     
     return async(dispatch)=>{
         try{
@@ -15,7 +15,7 @@ function getMovies(){
 
 
         const popularMovieApi = api.get(
-            `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+            `/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentpage}`
             );
         
         const topRatedApi = api.get(
