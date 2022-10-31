@@ -204,6 +204,16 @@ margin : 20px 10px;
 }
 
 
+/* 모달 */
+
+.modal-content .modal-header{
+    background-color: rgb(41, 41, 41);
+}
+
+.modal-content .modal-body{
+    background-color: rgb(41, 41, 41);
+}
+
 /* movies 페이지 */
 
 .first_accodian{

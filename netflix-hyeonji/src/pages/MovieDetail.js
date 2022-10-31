@@ -72,10 +72,7 @@ const MovieDetail = () => {
               size="xl"
               centered="true"
             >
-              <Modal.Header closeButton>
-                <Modal.Title id="example-custom-modal-styling-title">
-                  Custom Modal Styling
-                </Modal.Title>
+              <Modal.Header closeButton> 
               </Modal.Header>
               <Modal.Body className="modalBox">
                <Youtube movieVideos={movieVideos}/>
@@ -112,7 +109,7 @@ const MovieDetail = () => {
               <FontAwesomeIcon icon={faStar} className="icon" />
               <span className="score">{item.vote_average}</span>
 
-              <FontAwesomeIcon icon={faUsers} className="icon" />
+              <FontAwesomeIcon icon={faUsers} className="people_icon" />
               <span className="score">{item.popularity}</span>
 
               <span className="adult">{item.adult ? "청불" : "Under 18"}</span>

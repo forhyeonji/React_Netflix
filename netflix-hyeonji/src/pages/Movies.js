@@ -8,11 +8,13 @@ import { SecondAccodian } from "../components/SecondAccodian";
 import BigMovieCard from "../components/BigMovieCard";
 
 
+
+
 const Movies = () => {
   const { popularMovies, topRatedMovies, upcomingMovies, loading } =
     useSelector((state) => state.movie);
 
-  console.log("aaa인기영화", popularMovies);
+
 
   if (loading) {
     return (
@@ -21,7 +23,6 @@ const Movies = () => {
       </div>
     );
   }
-
   return (
     <div className="movie-sidebar-wrapper">
       <Container>
