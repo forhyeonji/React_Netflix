@@ -12,7 +12,7 @@ const ReviewBox = ({review}) => {
     <Container className='review_container'>
         <div  className='review_content'>
         {review.results.map((item)=>(
-          <ReviewCard item={item} />
+          <ReviewCard item={item} className="review_card"/>
         ))}
         </div>
     </Container>

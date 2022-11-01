@@ -9,13 +9,13 @@ import { ClipLoader } from 'react-spinners'
 
 const Home = () => {
     const dispatch = useDispatch();
-
+    const [currentpage, setCurrentpage] = React.useState(1); //현재페이지
     const { popularMovies, topRatedMovies, upcomingMovies, loading } = useSelector(
         (state) => (state.movie)
       );
       
-  useEffect(()=>{
-    dispatch(movieAction.getMovies());
+    useEffect(()=>{
+    dispatch(movieAction.getMovies({ currentpage }));
   },[])
 
 

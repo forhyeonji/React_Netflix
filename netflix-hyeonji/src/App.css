@@ -10,7 +10,31 @@ body {
     color : white;
     text-decoration: none;
     margin-right : 20px;
+
 }
+
+.mb-3 .nav-item{
+    margin-top:2rem;
+    margin-bottom: 2rem;
+}
+
+.mb-3 .nav-item button{
+background-color: white;
+color:rgb(82, 82, 82);
+width:15rem;
+height: 50px;
+border-radius: 0px;
+}
+
+.mb-3 .nav-item button.active{
+    background-color: rgb(231, 55, 55);
+    color:white;
+    width:15rem;
+    height: 50px;
+    border-radius: 0px;
+    }
+
+
 
 .main_title{
     font-size: 60px;
@@ -194,7 +218,6 @@ border-bottom: 1px solid white;
 padding-bottom: 10px;
 }
 
-
 /* 추천영화 */
 
 .relatedCard{
@@ -208,6 +231,8 @@ margin : 20px 10px;
 
 .modal-content .modal-header{
     background-color: rgb(41, 41, 41);
+    border-radius: 0px;
+    border:0px;
 }
 
 .modal-content .modal-body{
@@ -344,4 +369,38 @@ border-bottom: solid 1px white;
     position: absolute;
     bottom:2rem;
     left : 1rem;
+}
+
+
+.pagination{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+    height:50px;
+
+    margin: 20px;
+}
+
+
+.pagination li{
+    background: linear-gradient(80deg,#f79533,#dc143c,#000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width:50px;
+    height:100%;
+}
+
+.pagination li a{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color : black;
+    text-decoration: none;
+    height:100%;
+
+    font-size:20px;
+    font-weight: 600;
 }

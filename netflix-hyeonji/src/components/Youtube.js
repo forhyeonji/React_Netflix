@@ -15,7 +15,7 @@ const opts = {
 
   return (
     <div>
-        <YouTube videoId={movieVideos.results[0].key} opts={opts} onEnd={(e)=>{e.target.stopVideo(0);}}   />;
+        <YouTube videoId={movieVideos.results[0].key} opts={opts} onEnd={(e)=>{e.target.stopVideo(0);}}   />
     </div>
   )
 }

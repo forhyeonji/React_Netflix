@@ -162,8 +162,9 @@ const MovieDetail = () => {
               defaultActiveKey="profile"
               id="uncontrolled-tab-example"
               className="mb-3"
+              variant="pills"
             >
-              <Tab eventKey="profile" title="Reviews">
+              <Tab eventKey="profile" title="Reviews" className="review-tab">
                 <ReviewBox review={detailReviews} />
               </Tab>
               <Tab eventKey="home" title="Related Movies">

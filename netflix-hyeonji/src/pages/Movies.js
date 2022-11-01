@@ -69,7 +69,11 @@ const Movies = () => {
           
         </Row>
         <Row>
-          <Col><Paging page={currentpage} count={2000} setPage={setPage} /></Col>
+          <Col>
+          <div className="pagination">
+          <Paging page={currentpage} count={2000} setPage={setPage}/>
+          </div>
+          </Col>
         </Row>
       </Container>
     </div>
