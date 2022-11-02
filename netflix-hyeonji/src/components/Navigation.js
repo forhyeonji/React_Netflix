@@ -1,8 +1,36 @@
 import React from 'react';
 import { Navbar, Container, Form, Button, Nav, FormControl } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchAction } from '../redux/actions/searchAction';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {searchMovies} = useSelector(
+    (state)=>(state.search)
+  )
+
+  const search=(event)=>{
+    if (event.key == "Enter"){
+      
+      event.preventDefault();
+      // 입력한 검색어를 읽어와서
+      let keyword=event.target.value;
+      console.log("keyword", keyword);
+      navigate(`/movies?query=${keyword}`)
+      
+
+  }
+
+
+  }
+
   return (
       <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
@@ -24,6 +52,7 @@ const Navigation = () => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onKeyDown={(event)=>search(event)}
             />
             <Button variant="danger">Search</Button>
           </Form>
@@ -32,5 +61,6 @@ const Navigation = () => {
     </Navbar>
   )
 }
+
 
 export default Navigation

@@ -1,4 +1,3 @@
-import { faBlackboard } from "@fortawesome/free-solid-svg-icons";
 import api from "../api";
 import { movieActions } from "../reducers/movieReducer";
 

@@ -12,7 +12,6 @@ const BigMovieCard = ({ item }) => {
     navigate(`/movies/${item.id}`, { state: { item } });
   };
   const { genreList } = useSelector((state) => state.movie);
-  console.log("인기인기", item);
   return (
  
         <Col lg={6}>
