@@ -18,6 +18,8 @@ const OPTIONS = [
 ];
 
 const FirstAccodian = () => {
+
+
   return (
     <div>
       <div id="accodian_box">

@@ -22,11 +22,11 @@ function getMovies({ currentpage }){
             );
         
         const topRatedApi = api.get(
-            `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+            `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${currentpage}`
             );
 
         const upComingApi = api.get(
-            `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+            `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${currentpage}`
             );
 
         const genreApi = api.get(
