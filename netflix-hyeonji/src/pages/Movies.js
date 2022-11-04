@@ -9,17 +9,17 @@ import { SecondAccodian } from "../components/SecondAccodian";
 import BigMovieCard from "../components/BigMovieCard";
 import { Paging } from "../components/Paging";
 import { useParams, useSearchParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-
-
 
 
 
 const Movies = () => {
-  const { popularMovies, topRatedMovies, upcomingMovies, loading } =
+    const { popularMovies, loading } =
     useSelector((state) => state.movie);
+
+    const { searchMovies } =
+    useSelector((state) => state.search);
+
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
     const [count, setCount] = React.useState(0); //아이템 총 개수
     const [currentpage, setCurrentpage] = React.useState(1); //현재페이지
@@ -30,6 +30,7 @@ const Movies = () => {
     const [currentPosts, setCurrentPosts] = React.useState(0);
     const [query,setQuery] = useSearchParams();
     //items호출
+
    
     React.useEffect(() => {
       setCount(items.length);
@@ -38,12 +39,9 @@ const Movies = () => {
       setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
       
       if(query!=''){
-        console.log("키워드 있음")
-        let keyword=query.get("query")
-        console.log("쿼리 뭔데?", keyword)
-        
-        console.log("패치했어??")
-        navigate(`/movies`)
+
+      let keyword=query.get("query")
+      dispatch(searchAction.getSearches({keyword,currentpage}));
       }else{
         console.log("키워드 없음")
       dispatch(movieAction.getMovies({ currentpage }));
@@ -64,6 +62,40 @@ const Movies = () => {
       </div>
     );
   }
+
+  if(query!=''){
+    return(
+      <div className="movie-sidebar-wrapper">
+      <Container>
+        <Row>
+          <Col lg={4}>
+            <FirstAccodian />
+            <SecondAccodian />
+          </Col>
+          <Col lg={8}>
+ 
+            <Row>
+            {searchMovies.results.map((item)=>
+                 <BigMovieCard item={item}/>
+            )}
+            </Row>
+         
+          </Col>
+          
+        </Row>
+        <Row>
+          <Col>
+          <div className="pagination">
+          <Paging page={currentpage} count={searchMovies.total_results} setPage={setPage}/>
+          </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+    )
+    }
+
+
   return (
     <div className="movie-sidebar-wrapper">
       <Container>
@@ -86,7 +118,7 @@ const Movies = () => {
         <Row>
           <Col>
           <div className="pagination">
-          <Paging page={currentpage} count={2000} setPage={setPage}/>
+          <Paging page={currentpage} count={popularMovies.total_results} setPage={setPage}/>
           </div>
           </Col>
         </Row>
