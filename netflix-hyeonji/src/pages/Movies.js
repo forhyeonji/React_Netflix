@@ -76,7 +76,7 @@ const Movies = () => {
           <Col lg={8}>
  
             <Row>
-            {searchMovies.results.map((item)=>
+            {searchMovies.results && searchMovies.results.map((item)=>
                  <BigMovieCard item={item}/>
             )}
             </Row>
