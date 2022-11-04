@@ -3,13 +3,12 @@ import { movieAction } from "../redux/actions/movieAction";
 import { searchAction } from "../redux/actions/searchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-import { ClipLoader } from "react-spinners";
 import FirstAccodian from "../components/FirstAccodian";
 import { SecondAccodian } from "../components/SecondAccodian";
 import BigMovieCard from "../components/BigMovieCard";
 import { Paging } from "../components/Paging";
 import { useParams, useSearchParams } from "react-router-dom";
-
+import { ClipLoader } from "react-spinners";
 
 
 const Movies = () => {
@@ -55,14 +54,16 @@ const Movies = () => {
     };
 
 
-  if (loading) {
-    return (
-      <div className="spinner_box">
-        <ClipLoader color="#ffff" loading={loading} size={150} />
-      </div>
-    );
-  }
+    if (loading) {
+      return (
+        <div className="spinner_box">
+          <ClipLoader color="#ffff" loading={loading} size={150} />
+        </div>
+      );
+    }
+  
 
+  // 검색어가 있으면 이 화면을 보여주시오
   if(query!=''){
     return(
       <div className="movie-sidebar-wrapper">

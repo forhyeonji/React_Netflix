@@ -8,19 +8,13 @@ function getSearches({keyword, currentpage}){
     
     return async(dispatch)=>{
         try{
-            console.log("여기는 왔어1??")
-            
-          
             const searchMovieApi = api.get(
             `search/movie?api_key=${API_KEY}&language=en-US&page=${currentpage}&include_adult=false&query=${keyword}`
             );
-            console.log("여기는 왔어2??", searchMovieApi)
 
             let [searchMovies] = await Promise.all([
                 searchMovieApi,
             ]);
-
-            console.log("❤❤searchMovieApi❤❤",searchMovies)
 
             dispatch(searchActions.getMovieSearch({searchMovies}))
 

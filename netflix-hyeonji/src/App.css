@@ -404,3 +404,38 @@ border-bottom: solid 1px white;
     font-size:20px;
     font-weight: 600;
 }
+
+
+/* 드롭박스 */
+
+.sort_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* 
+.dropdown-toggle{
+    width:100%;
+    height: 40px;
+    background-color: black;
+}
+
+.btn-secondary{
+    background-color: black;
+    border-color: black;
+
+} */
+
+
+.select_list{
+    color:white;
+    background-color: black;
+    width:45%;
+    height: 35px;
+    text-align: center;
+    margin: 1rem;
+
+    border-color: black;
+    border-bottom: #dc143c 1px solid;
+}
