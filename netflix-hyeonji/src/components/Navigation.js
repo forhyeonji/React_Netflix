@@ -18,7 +18,7 @@ const Navigation = () => {
 
   const search=(event)=>{
     if (event.key == "Enter"){
-      
+      // 새로고침 금지
       event.preventDefault();
       // 입력한 검색어를 읽어와서
       let keyword=event.target.value;

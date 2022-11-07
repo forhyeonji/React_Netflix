@@ -11,12 +11,19 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 
+
+
 const Movies = () => {
-    const { popularMovies, loading } =
+    
+    const { popularMovies, loading } = //인기영화
     useSelector((state) => state.movie);
 
     const { searchMovies } =
-    useSelector((state) => state.search);
+    useSelector((state) => state.search); //검색기능
+
+    const { sortMovies } =
+    useSelector((state)=>(state.sort)); //sort기능
+
 
     const dispatch = useDispatch();
     const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
@@ -30,23 +37,25 @@ const Movies = () => {
     const [query,setQuery] = useSearchParams();
     //items호출
 
+
    
     React.useEffect(() => {
       setCount(items.length);
       setIndexOfLastPost(currentpage * postPerPage);
       setIndexOfFirstPost(indexOfLastPost - postPerPage);
       setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
-      
+    
+
       if(query!=''){
 
       let keyword=query.get("query")
       dispatch(searchAction.getSearches({keyword,currentpage}));
       }else{
-        console.log("키워드 없음")
+
       dispatch(movieAction.getMovies({ currentpage }));
       }
 
-    }, [currentpage, indexOfFirstPost, indexOfLastPost, items, postPerPage, query]);
+    }, [currentpage, indexOfFirstPost, indexOfLastPost, items, postPerPage, query, sortMovies]);
 
 
     const setPage = (e) => {
@@ -61,40 +70,6 @@ const Movies = () => {
         </div>
       );
     }
-  
-
-  // 검색어가 있으면 이 화면을 보여주시오
-  if(query!=''){
-    return(
-      <div className="movie-sidebar-wrapper">
-      <Container>
-        <Row>
-          <Col lg={4}>
-            <FirstAccodian />
-            <SecondAccodian />
-          </Col>
-          <Col lg={8}>
- 
-            <Row>
-            {searchMovies.results && searchMovies.results.map((item)=>
-                 <BigMovieCard item={item}/>
-            )}
-            </Row>
-         
-          </Col>
-          
-        </Row>
-        <Row>
-          <Col>
-          <div className="pagination">
-          <Paging page={currentpage} count={searchMovies.total_results} setPage={setPage}/>
-          </div>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-    )
-    }
 
 
   return (
@@ -102,13 +77,17 @@ const Movies = () => {
       <Container>
         <Row>
           <Col lg={4}>
-            <FirstAccodian />
+            <FirstAccodian currentpage={currentpage}/>
             <SecondAccodian />
           </Col>
           <Col lg={8}>
  
             <Row>
-            {popularMovies.results.map((item)=>
+            {query!=''?
+            searchMovies.results && 
+            searchMovies.results.map((item)=>
+                 <BigMovieCard item={item}/>)
+            :popularMovies.results.map((item)=>
                  <BigMovieCard item={item}/>
             )}
             </Row>
@@ -119,7 +98,7 @@ const Movies = () => {
         <Row>
           <Col>
           <div className="pagination">
-          <Paging page={currentpage} count={popularMovies.total_results} setPage={setPage}/>
+          <Paging page={currentpage} count={query!=''?searchMovies.total_results:popularMovies.total_results} setPage={setPage}/>
           </div>
           </Col>
         </Row>
