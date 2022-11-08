@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -22,6 +21,9 @@ import Navigation from './components/Navigation';
 // 12. 영화 필터링
 
 function App() {
+
+  
+
   return (
     <div>  
       <Navigation />

@@ -2,17 +2,16 @@ import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import { useDispatch } from "react-redux";
 import { sortAction } from "../redux/actions/sortAction";
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { searchActions } from "../redux/reducers/searchReducer";
 
 
 const FirstAccodian = ({currentpage}) => {
-  // const [selected, setSelected] = useState("");
-
-
+  
   const dispatch = useDispatch();
   const OPTIONS = [
-    { value: "None", name: "None" },
+    { value: "None", name: "None"},
     { value: "popularity.desc", name: "Popularity(Desc)" },
     { value: "popularity.asc", name: "Popularity(Asc)" },
   
@@ -26,15 +25,14 @@ const FirstAccodian = ({currentpage}) => {
     { value: "revenue.asc", name: "Revenue(Asc)" },
   ];
 
-
   const handleSelect = (e) => {
     console.log("11111내가선택한거", e.target.value);
     const selected = e.target.value;
-    console.log("22222선택후", selected);
+    console.log("선택후후후", selected)
     dispatch(sortAction.getSort({selected, currentpage}))
-  
-    console.log("33333dispatch후후후", selected);
+
   }
+
 
 
   return (

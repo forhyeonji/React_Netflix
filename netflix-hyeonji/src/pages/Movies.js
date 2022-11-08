@@ -1,7 +1,6 @@
 import React from "react";
 import { movieAction } from "../redux/actions/movieAction";
 import { searchAction } from "../redux/actions/searchAction";
-
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import FirstAccodian from "../components/FirstAccodian";
@@ -10,8 +9,12 @@ import BigMovieCard from "../components/BigMovieCard";
 import { Paging } from "../components/Paging";
 import { useParams, useSearchParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { sortAction } from "../redux/actions/sortAction";
+import { useState } from "react";
 
 
+// 왜 안되지?? 왜 api는 오는데 왜 화면에 올 수가 없니??
+// 왜 내 속을 썩이지?????
 
 
 const Movies = () => {
@@ -19,15 +22,16 @@ const Movies = () => {
     const { popularMovies, loading } = //인기영화
     useSelector((state) => state.movie);
 
+   
     const { searchMovies } =
     useSelector((state) => state.search); //검색기능
 
     const { sortMovies } =
-    useSelector((state)=> state.sort); //sort기능
+    useSelector((state) => state.sort); //검색기능
 
-    console.log("화면에서sort",sortMovies);
-    console.log("화면에서popular",popularMovies);
-
+    console.log("화면에서 sort",sortMovies)
+    console.log("화면에서 인기영화",popularMovies)
+    
 
     const dispatch = useDispatch();
     const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
@@ -38,28 +42,28 @@ const Movies = () => {
     const [indexOfLastPost, setIndexOfLastPost] = React.useState(0);
     const [indexOfFirstPost, setIndexOfFirstPost] = React.useState(0);
     const [currentPosts, setCurrentPosts] = React.useState(0);
+    // 검색
     const [query,setQuery] = useSearchParams();
-    //items호출
-
-
-   
+  
     React.useEffect(() => {
       setCount(items.length);
       setIndexOfLastPost(currentpage * postPerPage);
       setIndexOfFirstPost(indexOfLastPost - postPerPage);
       setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
-    
 
-      if(query!=''){
-
-      let keyword=query.get("query")
-      dispatch(searchAction.getSearches({keyword,currentpage}));
+  
+      if (query!=''){
+        let keyword=query.get("query")|| ""
+        dispatch(searchAction.getSearches({keyword, currentpage}));
       }else{
-      dispatch(movieAction.getMovies({ currentpage }));
+        dispatch(movieAction.getMovies({ currentpage }));
       }
 
-    }, [currentpage, indexOfFirstPost, indexOfLastPost, items, postPerPage, query, sortMovies]);
-
+     
+    }, [currentpage, indexOfFirstPost, indexOfLastPost, items, postPerPage, query]);
+    
+    
+ 
 
     const setPage = (e) => {
       setCurrentpage(e);
@@ -74,44 +78,13 @@ const Movies = () => {
       );
     }
 
-  // if (sortMovies && sortMovies!=null){
-  //   return (
-  //     <div className="movie-sidebar-wrapper">
-  //       <Container>
-  //         <Row>
-  //           <Col lg={4}>
-  //             <FirstAccodian currentpage={currentpage}/>
-  //             <SecondAccodian />
-  //           </Col>
-  //           <Col lg={8}>
-   
-  //             <Row>
-  //             {sortMovies.results && sortMovies.results.map((item)=>
-  //                  <BigMovieCard item={item}/>
-  //             )}
-  //             </Row>
-           
-  //           </Col>
-            
-  //         </Row>
-  //         <Row>
-  //           <Col>
-  //           <div className="pagination">
-  //           <Paging page={currentpage} count={sortMovies.total_results} setPage={setPage}/>
-  //           </div>
-  //           </Col>
-  //         </Row>
-  //       </Container>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="movie-sidebar-wrapper">
       <Container>
         <Row>
           <Col lg={4}>
-            <FirstAccodian currentpage={currentpage}/>
+            <FirstAccodian currentpage={currentpage} />
             <SecondAccodian />
           </Col>
           <Col lg={8}>
