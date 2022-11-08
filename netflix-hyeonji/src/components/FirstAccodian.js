@@ -10,6 +10,13 @@ import { searchActions } from "../redux/reducers/searchReducer";
 const FirstAccodian = ({currentpage}) => {
   
   const dispatch = useDispatch();
+
+  // 컴포넌트!!!
+  const { sortMovies } =
+  useSelector((state) => state.sort); //검색기능
+  
+  console.log("컨포넌트에서 sort",sortMovies)
+
   const OPTIONS = [
     { value: "None", name: "None"},
     { value: "popularity.desc", name: "Popularity(Desc)" },

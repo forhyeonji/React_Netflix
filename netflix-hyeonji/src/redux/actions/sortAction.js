@@ -15,10 +15,10 @@ function getSort({selected, currentpage}){
                 sortMovieApi,
             ]);
 
-            console.log("여기여기 sort!@@@",sortMovies.data);
+            console.log("여기여기 action sort @@@",sortMovies.data);
 
             dispatch(sortActions.getMovieSort(sortMovies))
-          
+            
         } catch(error) {
             
             dispatch(sortActions.getSortFailure());

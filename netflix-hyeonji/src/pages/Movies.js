@@ -26,10 +26,11 @@ const Movies = () => {
     const { searchMovies } =
     useSelector((state) => state.search); //검색기능
 
+    // Movie 페이지!!!
     const { sortMovies } =
     useSelector((state) => state.sort); //검색기능
 
-    console.log("화면에서 sort",sortMovies)
+    console.log("Movie페이지에서 sort",sortMovies)
     console.log("화면에서 인기영화",popularMovies)
     
 
@@ -44,7 +45,8 @@ const Movies = () => {
     const [currentPosts, setCurrentPosts] = React.useState(0);
     // 검색
     const [query,setQuery] = useSearchParams();
-  
+
+
     React.useEffect(() => {
       setCount(items.length);
       setIndexOfLastPost(currentpage * postPerPage);
