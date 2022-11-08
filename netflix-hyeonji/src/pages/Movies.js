@@ -1,6 +1,7 @@
 import React from "react";
 import { movieAction } from "../redux/actions/movieAction";
 import { searchAction } from "../redux/actions/searchAction";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import FirstAccodian from "../components/FirstAccodian";
@@ -22,7 +23,10 @@ const Movies = () => {
     useSelector((state) => state.search); //검색기능
 
     const { sortMovies } =
-    useSelector((state)=>(state.sort)); //sort기능
+    useSelector((state)=> state.sort); //sort기능
+
+    console.log("화면에서sort",sortMovies);
+    console.log("화면에서popular",popularMovies);
 
 
     const dispatch = useDispatch();
@@ -51,7 +55,6 @@ const Movies = () => {
       let keyword=query.get("query")
       dispatch(searchAction.getSearches({keyword,currentpage}));
       }else{
-
       dispatch(movieAction.getMovies({ currentpage }));
       }
 
@@ -71,6 +74,37 @@ const Movies = () => {
       );
     }
 
+  // if (sortMovies && sortMovies!=null){
+  //   return (
+  //     <div className="movie-sidebar-wrapper">
+  //       <Container>
+  //         <Row>
+  //           <Col lg={4}>
+  //             <FirstAccodian currentpage={currentpage}/>
+  //             <SecondAccodian />
+  //           </Col>
+  //           <Col lg={8}>
+   
+  //             <Row>
+  //             {sortMovies.results && sortMovies.results.map((item)=>
+  //                  <BigMovieCard item={item}/>
+  //             )}
+  //             </Row>
+           
+  //           </Col>
+            
+  //         </Row>
+  //         <Row>
+  //           <Col>
+  //           <div className="pagination">
+  //           <Paging page={currentpage} count={sortMovies.total_results} setPage={setPage}/>
+  //           </div>
+  //           </Col>
+  //         </Row>
+  //       </Container>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="movie-sidebar-wrapper">

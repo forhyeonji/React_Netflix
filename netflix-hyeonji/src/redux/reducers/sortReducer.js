@@ -20,5 +20,7 @@ const sortSlice = createSlice({
     },
 });
 
+console.log("12341234", sortSlice)
+
 export const sortActions = sortSlice.actions;
 export default sortSlice.reducer;

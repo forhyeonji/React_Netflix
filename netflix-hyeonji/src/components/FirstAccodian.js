@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import { useDispatch } from "react-redux";
 import { sortAction } from "../redux/actions/sortAction";
@@ -7,7 +7,9 @@ import { useSelector } from "react-redux";
 
 
 const FirstAccodian = ({currentpage}) => {
-  const [selected, setSelected] = useState("");
+  // const [selected, setSelected] = useState("");
+
+
   const dispatch = useDispatch();
   const OPTIONS = [
     { value: "None", name: "None" },
@@ -27,15 +29,13 @@ const FirstAccodian = ({currentpage}) => {
 
   const handleSelect = (e) => {
     console.log("11111내가선택한거", e.target.value);
-    setSelected(e.target.value);
+    const selected = e.target.value;
     console.log("22222선택후", selected);
     dispatch(sortAction.getSort({selected, currentpage}))
+  
     console.log("33333dispatch후후후", selected);
   }
 
-  React.useEffect(()=>{
-    console.log("유즈이펙트",selected)
-  },[selected])
 
   return (
     <div>

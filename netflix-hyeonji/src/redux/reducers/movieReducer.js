@@ -39,5 +39,4 @@ const movieSlice = createSlice({
 console.log("pppp", movieSlice);
 
 export const movieActions = movieSlice.actions;
-export const movieState = movieSlice.state;
 export default movieSlice.reducer;

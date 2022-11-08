@@ -18,7 +18,7 @@ function getSort({selected, currentpage}){
             console.log("여기여기 sort!@@@",sortMovies.data);
 
             dispatch(sortActions.getMovieSort(sortMovies))
-            
+          
         } catch(error) {
             
             dispatch(sortActions.getSortFailure());
