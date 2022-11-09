@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { sortAction } from "../redux/actions/sortAction";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { searchActions } from "../redux/reducers/searchReducer";
+
 
 
 const FirstAccodian = ({currentpage}) => {
@@ -16,6 +16,12 @@ const FirstAccodian = ({currentpage}) => {
   useSelector((state) => state.sort); //검색기능
   
   console.log("컨포넌트에서 sort",sortMovies)
+
+  
+  // 모든 스테이트
+  const state = useSelector((state)=>state)
+  console.log("컴포넌트에서 모든 스테이트", state)
+
 
   const OPTIONS = [
     { value: "None", name: "None"},
@@ -32,6 +38,9 @@ const FirstAccodian = ({currentpage}) => {
     { value: "revenue.asc", name: "Revenue(Asc)" },
   ];
 
+
+
+  // sort 관련 dispatch
   const handleSelect = (e) => {
     console.log("11111내가선택한거", e.target.value);
     const selected = e.target.value;

@@ -32,7 +32,14 @@ const Movies = () => {
 
     console.log("Movie페이지에서 sort",sortMovies)
     console.log("화면에서 인기영화",popularMovies)
-    
+
+
+    // 모든 스테이트
+    const state = useSelector((state)=>state)
+    console.log("무비페이지에서 모든 스테이트", state)
+
+
+
 
     const dispatch = useDispatch();
     const [items, setItems] = React.useState([]) //리스트에 나타낼 아이템
@@ -48,12 +55,14 @@ const Movies = () => {
 
 
     React.useEffect(() => {
+      //페이징 관련
       setCount(items.length);
       setIndexOfLastPost(currentpage * postPerPage);
       setIndexOfFirstPost(indexOfLastPost - postPerPage);
       setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
 
-  
+      
+      //검색기능과 맨 첫 화면 기본페이지 관련 dispatch
       if (query!=''){
         let keyword=query.get("query")|| ""
         dispatch(searchAction.getSearches({keyword, currentpage}));

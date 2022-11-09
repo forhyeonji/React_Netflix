@@ -7,6 +7,10 @@ function getSort({selected, currentpage}){
 
     return async(dispatch)=>{
         try{
+
+            dispatch(sortActions.getSortRequest());
+
+
             const sortMovieApi = api.get(
                 `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${selected}&include_adult=true&include_video=false&page=${currentpage}`
             );
@@ -17,7 +21,7 @@ function getSort({selected, currentpage}){
 
             console.log("여기여기 action sort @@@",sortMovies.data);
 
-            dispatch(sortActions.getMovieSort(sortMovies))
+            dispatch(sortActions.getMovieSort({sortMovies}))
             
         } catch(error) {
             
