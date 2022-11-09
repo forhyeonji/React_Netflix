@@ -10,17 +10,12 @@ import { useSelector } from "react-redux";
 const FirstAccodian = ({currentpage}) => {
   
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // 컴포넌트!!!
   const { sortMovies } =
   useSelector((state) => state.sort); //검색기능
   
   console.log("컨포넌트에서 sort",sortMovies)
-
-  
-  // 모든 스테이트
-  const state = useSelector((state)=>state)
-  console.log("컴포넌트에서 모든 스테이트", state)
 
 
   const OPTIONS = [
@@ -45,7 +40,9 @@ const FirstAccodian = ({currentpage}) => {
     console.log("11111내가선택한거", e.target.value);
     const selected = e.target.value;
     console.log("선택후후후", selected)
+  
     dispatch(sortAction.getSort({selected, currentpage}))
+
 
   }
 

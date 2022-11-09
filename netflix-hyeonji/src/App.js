@@ -6,6 +6,7 @@ import Movies from './pages/Movies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation';
 
+
 // 1. 페이지 3개 필요 (홈페이지, movie페이지, movieDetail페이지)
 // 2. 홈페이지에서 배너를 볼 수 있다
 // 3. 3가지 섹션의 영화를 볼 수 있다 (popular, top rated, upcoming)
@@ -22,14 +23,14 @@ import Navigation from './components/Navigation';
 
 function App() {
 
-  
+
 
   return (
     <div>  
-      <Navigation />
+      <Navigation/>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/movies' element={<Movies/>}/>
+        <Route path='/movies' element={<Movies/>} />
         <Route path='/movies/:id' element={<MovieDetail/>}/>
       </Routes>
     </div>
