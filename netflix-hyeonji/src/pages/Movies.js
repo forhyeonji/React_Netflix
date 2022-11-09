@@ -109,7 +109,12 @@ const Movies = () => {
             popularMovies.results.map((item)=>
                  <BigMovieCard item={item}/>
             )} */}
-            {filteredList.results &&
+            {query!=''?
+            searchMovies.results &&
+            searchMovies.results.map((item)=>
+                 <BigMovieCard item={item}/>)
+            :
+            filteredList.results &&
             filteredList.results.map((item)=>
                  <BigMovieCard item={item}/>)
             }
