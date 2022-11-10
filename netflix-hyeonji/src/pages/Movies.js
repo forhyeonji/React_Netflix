@@ -15,34 +15,29 @@ import { useState } from "react";
 
 const Movies = () => {
 
-
-  const {
-    popularMovies,
-    loading,
-  } = //인기영화
-    useSelector((state) => state.movie);
-
-  const { searchMovies } = useSelector((state) => state.search); //검색기능
-
-  // Movie 페이지!!!
-  const { sortMovies } = useSelector((state) => state.sort); //sort 기능
-
-  console.log("Movie페이지에서 sort", sortMovies);
-  console.log("화면에서 인기영화", popularMovies);
-
+  
   const dispatch = useDispatch();
   const [items, setItems] = React.useState([]); //리스트에 나타낼 아이템
   const [count, setCount] = React.useState(0); //아이템 총 개수
   const [currentpage, setCurrentpage] = React.useState(1); //현재페이지
   const [postPerPage] = React.useState(7); //페이지당 아이템 개수
-
+  
   const [indexOfLastPost, setIndexOfLastPost] = React.useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = React.useState(0);
   const [currentPosts, setCurrentPosts] = React.useState(0);
-  // 검색
+  
+
+
+  // 검색 쿼리
   const [query, setQuery] = useSearchParams();
-  // let [filteredList, setFilteredList] = useState([]);
-  let [filteredList, setFilteredList] = React.useState(0);
+  // 인기영화(기본 화면)
+  const {popularMovies,loading} = useSelector((state) => state.movie);
+  // 검색된 영화
+  const { searchMovies } = useSelector((state) => state.search); //검색기능
+  // 분류된 영화
+  const { sortMovies } = useSelector((state) => state.sort); //sort 기능
+  // 조건부 렌더링을 위한 배열
+  let [filteredList, setFilteredList] = React.useState([]);
 
   React.useEffect(() => {
     //페이징 관련
@@ -71,6 +66,7 @@ const Movies = () => {
     
     
   ]);
+  
 
   React.useEffect(() => {
    
