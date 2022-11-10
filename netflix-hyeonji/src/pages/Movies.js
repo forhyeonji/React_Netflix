@@ -45,7 +45,9 @@ const Movies = () => {
     setIndexOfLastPost(currentpage * postPerPage);
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
     setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
-    setFilteredList(sortMovies);
+    
+
+    console.log("필터리스트",filteredList);
 
     //검색기능과 맨 첫 화면 기본페이지 관련 dispatch
     if (query != "") {
@@ -63,10 +65,8 @@ const Movies = () => {
     postPerPage,
     query,
     sortMovies,
-    
-    
   ]);
-  
+
 
   React.useEffect(() => {
    
@@ -108,12 +108,10 @@ const Movies = () => {
 
             {
             filteredList.results?
-            filteredList.results &&
             filteredList.results.map((item)=>
                  <BigMovieCard item={item}/>)
                  
             :
-            popularMovies.results &&
             popularMovies.results.map((item)=>
                  <BigMovieCard item={item}/>)
             }

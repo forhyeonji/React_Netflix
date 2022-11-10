@@ -40,9 +40,8 @@ const FirstAccodian = ({currentpage, setFilteredList}) => {
     console.log("11111내가선택한거", e.target.value);
     const selected = e.target.value;
     console.log("선택후후후", selected)
-  
-    dispatch(sortAction.getSort({selected, currentpage}))
     setFilteredList(sortMovies)
+    dispatch(sortAction.getSort({selected, currentpage}))
     navigate(`/movies`)
    
   }
