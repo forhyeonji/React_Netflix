@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { movieAction } from "../redux/actions/movieAction";
 import { searchAction } from "../redux/actions/searchAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,16 +9,13 @@ import BigMovieCard from "../components/BigMovieCard";
 import { Paging } from "../components/Paging";
 import { useParams, useSearchParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { sortAction } from "../redux/actions/sortAction";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+
 
 
 const Movies = () => {
 
-  
 
-  
   const {
     popularMovies,
     loading,
@@ -44,8 +41,8 @@ const Movies = () => {
   const [currentPosts, setCurrentPosts] = React.useState(0);
   // 검색
   const [query, setQuery] = useSearchParams();
-  let [filteredList, setFilteredList] = useState([]);
-
+  // let [filteredList, setFilteredList] = useState([]);
+  let [filteredList, setFilteredList] = React.useState(0);
 
   React.useEffect(() => {
     //페이징 관련
@@ -63,7 +60,6 @@ const Movies = () => {
       dispatch(movieAction.getMovies({ currentpage }));
     }
 
-
   }, [
     currentpage,
     indexOfFirstPost,
@@ -71,8 +67,24 @@ const Movies = () => {
     items,
     postPerPage,
     query,
-    sortMovies
+    sortMovies,
+    
+    
   ]);
+
+  React.useEffect(() => {
+   
+    setFilteredList(searchMovies);
+
+  }, [searchMovies]);
+
+
+
+
+
+
+
+
 
   const setPage = (e) => {
     setCurrentpage(e);
@@ -91,34 +103,24 @@ const Movies = () => {
       <Container>
         <Row>
           <Col lg={4}>
-            <FirstAccodian currentpage={currentpage} />
+            <FirstAccodian currentpage={currentpage} setFilteredList={setFilteredList} />
             <SecondAccodian />
           </Col>
           <Col lg={8}>
 
             <Row>
-            {/* {query!=''?
-            searchMovies.results &&
-            searchMovies.results.map((item)=>
-                 <BigMovieCard item={item}/>)
-            :filteredList!=[]?
+
+            {
+            filteredList.results?
             filteredList.results &&
             filteredList.results.map((item)=>
                  <BigMovieCard item={item}/>)
-            :popularMovies.results &&
-            popularMovies.results.map((item)=>
-                 <BigMovieCard item={item}/>
-            )} */}
-            {query!=''?
-            searchMovies.results &&
-            searchMovies.results.map((item)=>
-                 <BigMovieCard item={item}/>)
+                 
             :
-            filteredList.results &&
-            filteredList.results.map((item)=>
+            popularMovies.results &&
+            popularMovies.results.map((item)=>
                  <BigMovieCard item={item}/>)
             }
-
             </Row>
 
           </Col>
@@ -127,50 +129,13 @@ const Movies = () => {
         <Row>
           <Col>
           <div className="pagination">
-          {/* {query!=''?searchMovies.total_results:filteredList!=[]?filteredList.total_results:popularMovies.total_results} */}
-          <Paging page={currentpage} count={2000} setPage={setPage}/>
+          <Paging page={currentpage} count={filteredList.results?filteredList.total_results:popularMovies.total_results} setPage={setPage}/>
           </div>
           </Col>
         </Row>
       </Container>
     </div>
   );
-
-  // return (
-  //   <div className="movie-sidebar-wrapper">
-
-  //     <Container>
-  //       <Row>
-  //         <Col lg={4}>
-  //           <FirstAccodian
-  //             currentpage={currentpage}
-  //             setFilteredList={setFilteredList}
-  //           />
-  //           <SecondAccodian />
-  //         </Col>
-  //         <Col lg={8}>
-  //           <Row>
-  //             {filteredList.results &&
-  //               filteredList.results.map((item) => (
-  //                 <BigMovieCard item={item} />
-  //               ))}
-  //           </Row>
-  //         </Col>
-  //       </Row>
-  //       <Row>
-  //         <Col>
-  //           <div className="pagination">
-  //             <Paging
-  //               page={currentpage}
-  //               count={filteredList.total_results}
-  //               setPage={setPage}
-  //             />
-  //           </div>
-  //         </Col>
-  //       </Row>
-  //     </Container>
-  //   </div>
-  // );
 };
 
 export default Movies;

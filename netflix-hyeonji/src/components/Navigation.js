@@ -6,14 +6,13 @@ import { searchAction } from '../redux/actions/searchAction';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 // useState로 키워드해서 보내주기 ㅎ
 
 const Navigation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {searchMovies} = useSelector(
-    (state)=>(state.search)
-  )
+
 
 
   const search=(event)=>{

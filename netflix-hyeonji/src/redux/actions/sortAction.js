@@ -12,7 +12,7 @@ function getSort({selected, currentpage}){
 
 
             const sortMovieApi = api.get(
-                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${selected}&include_adult=true&include_video=false&page=${currentpage}`
+                `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${selected}&include_adult=false&include_video=false&page=${currentpage}`
             );
 
             let [sortMovies] = await Promise.all([

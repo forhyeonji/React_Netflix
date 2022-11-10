@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 
 
-const FirstAccodian = ({currentpage}) => {
+const FirstAccodian = ({currentpage, setFilteredList}) => {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const FirstAccodian = ({currentpage}) => {
 
 
   const OPTIONS = [
-    { value: "None", name: "None"},
+    { value: "None544", name: "None"},
     { value: "popularity.desc", name: "Popularity(Desc)" },
     { value: "popularity.asc", name: "Popularity(Asc)" },
   
@@ -42,8 +42,9 @@ const FirstAccodian = ({currentpage}) => {
     console.log("선택후후후", selected)
   
     dispatch(sortAction.getSort({selected, currentpage}))
-
-
+    setFilteredList(sortMovies)
+    navigate(`/movies`)
+   
   }
 
 
