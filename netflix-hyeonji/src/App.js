@@ -1,10 +1,12 @@
 import './App.css';
+
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import Movies from './pages/Movies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation';
+
 
 
 // 1. 페이지 3개 필요 (홈페이지, movie페이지, movieDetail페이지)
@@ -22,7 +24,6 @@ import Navigation from './components/Navigation';
 // 12. 영화 필터링
 
 function App() {
-
 
   return (
     <div>  

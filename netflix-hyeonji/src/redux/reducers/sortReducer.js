@@ -25,7 +25,5 @@ const sortSlice = createSlice({
     },
 });
 
-console.log("@@@@sort리듀서@@@@", sortSlice)
-
 export const sortActions = sortSlice.actions;
 export default sortSlice.reducer;

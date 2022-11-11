@@ -39,7 +39,6 @@ const FirstAccodian = ({setCurrentpage}) => {
   
   // sort 관련 dispatch
   const handleSelect = (e) => {
-    console.log("11111내가선택한거", e.target.value);
     setCurrentpage(1);
     navigate(
       `/movies`,

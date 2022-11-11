@@ -29,8 +29,6 @@ const Movies = () => {
   
   // sort 선택한 값 받기
   const location = useLocation();
-  console.log("잘 받았니??", location.state)
-  
 
 
   // 검색 쿼리
@@ -78,23 +76,17 @@ const Movies = () => {
 
 
   React.useEffect(() => {
-   
     setFilteredList(sortMovies)
-    
   }, [
-    sortMovies,
-    
+    sortMovies, 
   ]);
 
 
 
     React.useEffect(() => {
       setFilteredList(searchMovies);
-      
-    
     }, [
       searchMovies,
-      
  ]);
 
 
@@ -119,9 +111,7 @@ const Movies = () => {
       <Container>
         <Row>
           <Col lg={4}>
-            <FirstAccodian
-            setCurrentpage={setCurrentpage}
-            />
+            <FirstAccodian setCurrentpage={setCurrentpage}/>
             <SecondAccodian />
           </Col>
           <Col lg={8}>
@@ -130,11 +120,11 @@ const Movies = () => {
 
             {
             filteredList.results?
-            filteredList.results.map((item)=>
+            filteredList.results && filteredList.results.map((item)=>
                  <BigMovieCard item={item}/>)
                  
             :
-            popularMovies.results.map((item)=>
+            popularMovies.results && popularMovies.results.map((item)=>
                  <BigMovieCard item={item}/>)
             }
             </Row>
