@@ -64,15 +64,20 @@ const Movies = () => {
     items,
     postPerPage,
     query,
-    sortMovies,
+
+    
   ]);
 
 
   React.useEffect(() => {
-   
-    setFilteredList(searchMovies);
+  
 
-  }, [searchMovies]);
+    setFilteredList(searchMovies);
+    setFilteredList(sortMovies)
+
+  }, [
+    searchMovies,
+    sortMovies,]);
 
 
 
@@ -99,7 +104,18 @@ const Movies = () => {
       <Container>
         <Row>
           <Col lg={4}>
-            <FirstAccodian currentpage={currentpage} setFilteredList={setFilteredList} />
+            <FirstAccodian
+            currentpage={currentpage}
+            setCount={setCount}
+            setIndexOfLastPost={setIndexOfLastPost}
+            setIndexOfFirstPost={setIndexOfFirstPost}
+            setCurrentPosts={setCurrentPosts}
+            items={items}
+            postPerPage={postPerPage}
+            indexOfLastPost={indexOfLastPost}
+            indexOfFirstPost={indexOfFirstPost}
+
+            />
             <SecondAccodian />
           </Col>
           <Col lg={8}>
