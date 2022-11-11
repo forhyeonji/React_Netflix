@@ -48,13 +48,13 @@ const Movies = () => {
     setIndexOfLastPost(currentpage * postPerPage);
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
     setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
-    setFilteredList('');
+    
+
     
     //검색기능과 맨 첫 화면 기본페이지 관련 dispatch
     if (query != "") {
       let keyword = query.get("query") || "";
       dispatch(searchAction.getSearches({ keyword, currentpage }));
-
     } else if (location.state!=null){
       const { selected } = location.state;
       dispatch(sortAction.getSort({selected, currentpage}))
@@ -76,7 +76,9 @@ const Movies = () => {
 
 
   React.useEffect(() => {
+    setFilteredList('');
     setFilteredList(sortMovies)
+    
   }, [
     sortMovies, 
   ]);
@@ -84,6 +86,7 @@ const Movies = () => {
 
 
     React.useEffect(() => {
+      setFilteredList('');
       setFilteredList(searchMovies);
     }, [
       searchMovies,

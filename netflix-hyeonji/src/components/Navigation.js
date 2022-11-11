@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchAction } from '../redux/actions/searchAction';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
 
 
 // useState로 키워드해서 보내주기 ㅎ
@@ -13,7 +13,13 @@ import { useNavigate } from 'react-router-dom';
 const Navigation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [keyword, setKeyword]=useState('');
+  const handleChange = ({ target: { value } }) => setKeyword(value);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/movies?query=${keyword}`)
+  };
 
 
   const search=(event)=>{
@@ -44,15 +50,16 @@ const Navigation = () => {
             <Link to='/movies' className='nav-item'>Movies</Link>
            
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleSubmit}>
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
               onKeyDown={(event)=>search(event)}
+              onChange={handleChange}
             />
-            <Button variant="danger">Search</Button>
+            <Button variant="danger" type="submit">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
