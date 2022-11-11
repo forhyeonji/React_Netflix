@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import { useDispatch } from "react-redux";
 import { sortAction } from "../redux/actions/sortAction";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { Paging } from "../components/Paging";
 
 
 
-const FirstAccodian = ({currentpage, setFilteredList}) => {
+const FirstAccodian = ({
+  currentpage,
+  setCount,
+  setIndexOfLastPost,
+  setIndexOfFirstPost,
+  setCurrentPosts,
+  items,
+  postPerPage,
+  indexOfLastPost,
+  indexOfFirstPost,
+}) => {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // 컴포넌트!!!
   const { sortMovies } =
   useSelector((state) => state.sort); //검색기능
-  
-  console.log("컨포넌트에서 sort",sortMovies)
+
+
+
 
 
   const OPTIONS = [
@@ -33,19 +45,35 @@ const FirstAccodian = ({currentpage, setFilteredList}) => {
     { value: "revenue.asc", name: "Revenue(Asc)" },
   ];
 
-
-
+  
+  
   // sort 관련 dispatch
   const handleSelect = (e) => {
     console.log("11111내가선택한거", e.target.value);
     const selected = e.target.value;
     console.log("선택후후후", selected)
-    setFilteredList(sortMovies)
+  
     dispatch(sortAction.getSort({selected, currentpage}))
     navigate(`/movies`)
-   
+    
   }
+  
+  React.useEffect(() => {
 
+    setCount(items.length);
+    setIndexOfLastPost(currentpage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
+
+
+  }, [
+    currentpage,
+    indexOfFirstPost,
+    indexOfLastPost,
+    items,
+    postPerPage,
+    
+  ]);
 
 
   return (
