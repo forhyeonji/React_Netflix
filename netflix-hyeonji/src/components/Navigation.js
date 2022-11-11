@@ -23,7 +23,6 @@ const Navigation = () => {
       let keyword=event.target.value;
       // event.target.value = null;
       navigate(`/movies?query=${keyword}`)
-      
   }
   }
 

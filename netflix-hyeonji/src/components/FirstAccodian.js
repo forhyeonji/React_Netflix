@@ -8,10 +8,7 @@ import { Paging } from "../components/Paging";
 
 
 
-const FirstAccodian = ({
-  currentpage,
-
-}) => {
+const FirstAccodian = ({setCurrentpage}) => {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,11 +40,12 @@ const FirstAccodian = ({
   // sort 관련 dispatch
   const handleSelect = (e) => {
     console.log("11111내가선택한거", e.target.value);
-
+    setCurrentpage(1);
     navigate(
       `/movies`,
       {state:{selected : e.target.value}}
     )
+
     
   }
 

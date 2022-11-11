@@ -56,7 +56,12 @@ const Movies = () => {
     if (query != "") {
       let keyword = query.get("query") || "";
       dispatch(searchAction.getSearches({ keyword, currentpage }));
-    }else {
+
+    } else if (location.state!=null){
+      const { selected } = location.state;
+      dispatch(sortAction.getSort({selected, currentpage}))
+
+    } else {
       dispatch(movieAction.getMovies({ currentpage }));
     }
 
@@ -67,46 +72,39 @@ const Movies = () => {
     items,
     postPerPage,
     query,
+    location.state,
+    
+  ]);
+
+
+  React.useEffect(() => {
+   
+    setFilteredList(sortMovies)
+    
+  }, [
+    sortMovies,
     
   ]);
 
 
 
-  React.useEffect(() => {
-    if(location.state!=null){
-      const { selected } = location.state;
-      dispatch(sortAction.getSort({selected, currentpage}))
-    }
-    setCurrentpage(1);
-  }, [
-    location.state,]);
-
-
-  React.useEffect(() => {
-    setFilteredList(sortMovies)
-    setCurrentpage(1);
-  }, [
-    sortMovies,]);
-
-
-
     React.useEffect(() => {
       setFilteredList(searchMovies);
-      setCurrentpage(1);
+      
+    
     }, [
       searchMovies,
+      
  ]);
-
-
-
-
-
 
 
 
   const setPage = (e) => {
     setCurrentpage(e);
   };
+
+
+
 
   if (loading) {
     return (
@@ -122,16 +120,7 @@ const Movies = () => {
         <Row>
           <Col lg={4}>
             <FirstAccodian
-            currentpage={currentpage}
-            setCount={setCount}
-            setIndexOfLastPost={setIndexOfLastPost}
-            setIndexOfFirstPost={setIndexOfFirstPost}
-            setCurrentPosts={setCurrentPosts}
-            items={items}
-            postPerPage={postPerPage}
-            indexOfLastPost={indexOfLastPost}
-            indexOfFirstPost={indexOfFirstPost}
-
+            setCurrentpage={setCurrentpage}
             />
             <SecondAccodian />
           </Col>
