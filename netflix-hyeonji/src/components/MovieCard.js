@@ -11,6 +11,7 @@ const MovieCard = ({ item }) => {
     const { genreList } = useSelector(state=>state.movie)
 
     const goMovieDetail = () => { 
+      console.log("무비카드에서 아이템", item)
       navigate(
         `/movies/${item.id}`,
         {state:{item}}

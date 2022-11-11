@@ -10,7 +10,8 @@ import { Paging } from "../components/Paging";
 import { useParams, useSearchParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { useState } from "react";
-
+import { useLocation } from "react-router-dom";
+import { sortAction } from "../redux/actions/sortAction";
 
 
 const Movies = () => {
@@ -25,6 +26,10 @@ const Movies = () => {
   const [indexOfLastPost, setIndexOfLastPost] = React.useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = React.useState(0);
   const [currentPosts, setCurrentPosts] = React.useState(0);
+  
+  // sort 선택한 값 받기
+  const location = useLocation();
+  console.log("잘 받았니??", location.state)
   
 
 
@@ -45,10 +50,8 @@ const Movies = () => {
     setIndexOfLastPost(currentpage * postPerPage);
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
     setCurrentPosts(items.slice(indexOfFirstPost, indexOfLastPost));
+    setFilteredList('');
     
-
-    console.log("필터리스트",filteredList);
-
     //검색기능과 맨 첫 화면 기본페이지 관련 dispatch
     if (query != "") {
       let keyword = query.get("query") || "";
@@ -64,21 +67,35 @@ const Movies = () => {
     items,
     postPerPage,
     query,
-
     
   ]);
 
 
+
   React.useEffect(() => {
-  
-
-    setFilteredList(searchMovies);
-    setFilteredList(sortMovies)
-
+    if(location.state!=null){
+      const { selected } = location.state;
+      dispatch(sortAction.getSort({selected, currentpage}))
+    }
+    setCurrentpage(1);
   }, [
-    searchMovies,
+    location.state,]);
+
+
+  React.useEffect(() => {
+    setFilteredList(sortMovies)
+    setCurrentpage(1);
+  }, [
     sortMovies,]);
 
+
+
+    React.useEffect(() => {
+      setFilteredList(searchMovies);
+      setCurrentpage(1);
+    }, [
+      searchMovies,
+ ]);
 
 
 

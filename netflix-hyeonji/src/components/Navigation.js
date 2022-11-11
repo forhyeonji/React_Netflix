@@ -21,7 +21,9 @@ const Navigation = () => {
       event.preventDefault();
       // 입력한 검색어를 읽어와서
       let keyword=event.target.value;
+      // event.target.value = null;
       navigate(`/movies?query=${keyword}`)
+      
   }
   }
 

@@ -36,6 +36,8 @@ const MovieDetail = () => {
   const location = useLocation();
   const { item } = location.state;
 
+  console.log("디테일에서 로케이션", item)
+
   const paramsId = useParams();
   const params = paramsId.id;
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -55,10 +57,6 @@ const MovieDetail = () => {
     );
   }
 
-  console.log("aaa디테일", detailMovies);
-  console.log("bbb리뷰", detailReviews);
-  console.log("ccc관련", relatedMovies);
-  console.log("ddd비디오", movieVideos);
 
   return (
     <div>
