@@ -53,16 +53,18 @@ const Movies = () => {
     
     //검색기능과 맨 첫 화면 기본페이지 관련 dispatch
     if (query != "") {
+
       let keyword = query.get("query") || "";
       dispatch(searchAction.getSearches({ keyword, currentpage }));
+
     } else if (location.state!=null){
+
       const { selected } = location.state;
       dispatch(sortAction.getSort({selected, currentpage}))
 
     } else {
       dispatch(movieAction.getMovies({ currentpage }));
     }
-
   }, [
     currentpage,
     indexOfFirstPost,
@@ -115,7 +117,7 @@ const Movies = () => {
         <Row>
           <Col lg={4}>
             <FirstAccodian setCurrentpage={setCurrentpage}/>
-            <SecondAccodian />
+            {/* <SecondAccodian /> */}
           </Col>
           <Col lg={8}>
 

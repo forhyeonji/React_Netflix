@@ -1,8 +1,11 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import InputRange from 'react-input-range';
+import FilterSliderYear from "./FilterSliderYear";
+
+
 
 export const SecondAccodian = () => {
+
   return (
     <div>
       <div id="accodian_box">
@@ -12,14 +15,11 @@ export const SecondAccodian = () => {
               <h5>Filter</h5>
             </Accordion.Header>
             <Accordion.Body className="accordian">
-                {/* <InputRange
-                    maxValue={20}
-                    minValue={0}
-                    value={this.state.value}
-                    onChange={value => this.setState({ value })}
-                /> */}
+                
         
-        
+                <div id="app">
+                <FilterSliderYear />
+                </div>
             </Accordion.Body>
             <Accordion.Body className="accordian">메롱</Accordion.Body>
             <Accordion.Body className="accordian">하이</Accordion.Body>
