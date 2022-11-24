@@ -32,16 +32,13 @@ const NavBar = () => {
         <nav className='navbox'>
             <div>
                 <img src='https://noona-netflix.netlify.app/logo.png' width={140} className='navbar-logo'/>
-            
                 <ul className='navbar-menu'>
-                <Link to='/' className='nav-item'>Home</Link>
-                <Link to='/movies' className='nav-item'>Movies</Link>
+                    <Link to='/' className='nav-item'>Home</Link>
+                    <Link to='/movies' className='nav-item'>Movies</Link>
                 </ul>
-            
             </div>
 
             
-
             <form className='navbar-search' onSubmit={handleSubmit}>
                 <input
                     className='navbar-input'
@@ -56,7 +53,6 @@ const NavBar = () => {
                     Search
                 </button>
             </form>
-
 
         </nav>
 

@@ -24,8 +24,6 @@ body {
     font-family: "Montserrat",helvetica,arial,sans-serif;
 }
 
-
-
 .navbox {
     height: 90px;
     display: flex;
@@ -55,6 +53,11 @@ body {
     margin-right : 20px;
 }
 
+.nav-item:hover {
+    color : rgb(251, 77, 77);
+}
+
+
 .navbar-input {
     width:12rem;
     padding : 5px 12px;
@@ -75,28 +78,38 @@ body {
     border-radius: 7px;
     border: none;
 }
-/* 
 
-.mb-3 .nav-item{
-    margin-top:2rem;
-    margin-bottom: 2rem;
+@media screen and (max-width: 800px) {
+
+    .navbox {
+        flex-direction: column;
+        height : 270px;
+        padding : 2rem;
+    }
+    
+    .navbox div {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .navbar-logo {
+        margin: 0px;
+        margin-bottom : 1rem;
+    }
+
+    .nav-item {
+        color : white;
+        text-decoration: none;
+        display: flex;
+        padding:3px;
+        justify-content: center;
+        margin-bottom:1rem;
+    }
+
+    
 }
-
-.mb-3 .nav-item button{
-background-color: white;
-color:rgb(82, 82, 82);
-width:15rem;
-height: 50px;
-border-radius: 0px;
-}
-
-.mb-3 .nav-item button.active{
-    background-color: rgb(231, 55, 55);
-    color:white;
-    width:15rem;
-    height: 50px;
-    border-radius: 0px;
-    } */
 
 
 
