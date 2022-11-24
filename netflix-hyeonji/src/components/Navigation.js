@@ -46,9 +46,11 @@ const Navigation = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
+            
             <Link to='/' className='nav-item'>Home</Link>
             <Link to='/movies' className='nav-item'>Movies</Link>
-           
+            
+
           </Nav>
           <Form className="d-flex" onSubmit={handleSubmit}>
             <Form.Control
@@ -59,7 +61,7 @@ const Navigation = () => {
               onKeyDown={(event)=>search(event)}
               onChange={handleChange}
             />
-            <Button variant="danger" type="submit">Search</Button>
+            <Button variant="outline-danger" type="submit">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

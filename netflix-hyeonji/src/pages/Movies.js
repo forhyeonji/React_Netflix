@@ -4,7 +4,6 @@ import { searchAction } from "../redux/actions/searchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import FirstAccodian from "../components/FirstAccodian";
-import { SecondAccodian } from "../components/SecondAccodian";
 import BigMovieCard from "../components/BigMovieCard";
 import { Paging } from "../components/Paging";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -117,7 +116,6 @@ const Movies = () => {
         <Row>
           <Col lg={4}>
             <FirstAccodian setCurrentpage={setCurrentpage}/>
-            {/* <SecondAccodian /> */}
           </Col>
           <Col lg={8}>
 

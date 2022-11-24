@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import Movies from './pages/Movies';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar';
 import Navigation from './components/Navigation';
 
 
@@ -26,8 +27,8 @@ import Navigation from './components/Navigation';
 function App() {
 
   return (
-    <div>  
-      <Navigation />
+    <div>
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/movies' element={<Movies/>} />

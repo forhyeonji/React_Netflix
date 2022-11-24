@@ -12,6 +12,7 @@
   .input-range {
     margin-bottom: 160px;
   }
+
   
 
 
@@ -24,12 +25,57 @@ body {
 }
 
 
+
+.navbox {
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #131212;
+}
+
+.navbar-logo {
+    margin-right: 20px;
+}
+
+
+.navbar-menu {
+    display: inline-block;
+    padding: 0px;
+    margin-bottom: 0px;
+    align-items: center;
+    height:100%
+}
+
+
 .nav-item {
     color : white;
     text-decoration: none;
     margin-right : 20px;
-
 }
+
+.navbar-input {
+    width:12rem;
+    padding : 5px 12px;
+    margin-right: 8px;
+    font-family: "Noto Sans KR";
+    border-radius: 7px;
+    border: none;
+    
+}
+
+.navbar-btn {
+    width:5rem;
+    padding : 5px;
+    background-color: #dc143c;
+    color : white;
+    font-family: "Noto Sans KR";
+    font-size:17px;
+    border-radius: 7px;
+    border: none;
+}
+/* 
 
 .mb-3 .nav-item{
     margin-top:2rem;
@@ -50,7 +96,7 @@ border-radius: 0px;
     width:15rem;
     height: 50px;
     border-radius: 0px;
-    }
+    } */
 
 
 
@@ -144,25 +190,28 @@ border-radius: 0px;
 }
 
 .genre_btn{
-    margin-right: 15px;
+    /* margin-right: 15px; */
+    margin-right: 1rem;
     
 }
 
 .icon{
     display: inline-block;
-    margin-right: 10px;
+    /* margin-right: 10px; */
+    margin-right: 1rem;
     color : rgb(233, 151, 0);
 }
 
 .people_icon{
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 1rem;
     color : rgb(180, 180, 180);
 }
 
 .score{
-    margin-right: 26px;
+    margin-right: 1rem;
     font-weight: bold;
+    display: inline-block;
 }
 
 .adult{
@@ -170,6 +219,7 @@ border-radius: 0px;
     font-weight: bold;
     font-size: larger;
     font-style: oblique;
+    display: inline-block;
 }
 
 .big_title{

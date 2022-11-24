@@ -104,13 +104,20 @@ const MovieDetail = () => {
             </div>
 
             <div>
-              <FontAwesomeIcon icon={faStar} className="icon" />
-              <span className="score">{item.vote_average}</span>
+              <div className="score">
+                <FontAwesomeIcon icon={faStar} className="icon" />
+                {item.vote_average}
+              </div>
+              
+              
+              <div className="score">
+                <FontAwesomeIcon icon={faUsers} className="people_icon" />
+                {item.popularity}
+              </div>
 
-              <FontAwesomeIcon icon={faUsers} className="people_icon" />
-              <span className="score">{item.popularity}</span>
-
-              <span className="adult">{item.adult ? "청불" : "Under 18"}</span>
+              <div className="adult">
+                {item.adult ? "청불" : "Under 18"}
+              </div>
             </div>
 
             <div className="overview_box">
