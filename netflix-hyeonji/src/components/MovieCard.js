@@ -2,7 +2,8 @@ import React from "react";
 import { Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers, faStar, faFilm } from "@fortawesome/free-solid-svg-icons";
 
 const MovieCard = ({ item }) => {
     const navigate = useNavigate();
@@ -30,6 +31,7 @@ const MovieCard = ({ item }) => {
       onClick={goMovieDetail}
      >
       <div className="overlay">
+      <div className="card-mini-info">
             <h2>{item.title}</h2>
             <div>
                 {item.genre_ids.map((id) => (
@@ -39,8 +41,15 @@ const MovieCard = ({ item }) => {
                 ))}
             </div>
             <div>
-                <span>{item.vote_average}</span>
-                <span>{item.adult?"청불":"Under 18"}</span>
+              
+                  <h6 className="card-mini-score">
+                    <FontAwesomeIcon icon={faUsers} className="people_icon" />
+                    {item.vote_average}
+                  </h6>
+                  <div className="adult">
+                {item.adult?"청불":"Under 18"}
+                  </div>
+              </div>
             </div>
 
       </div>

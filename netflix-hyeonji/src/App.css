@@ -111,6 +111,29 @@ body {
     
 }
 
+.mb-3 .nav-item button{
+    background-color: white;
+    color:rgb(82, 82, 82);
+    width:15rem;
+    height: 50px;
+    border-radius: 0px;
+    margin-right:1rem;
+    margin-top:2rem;
+    }
+
+
+.mb-3 .nav-item button.active{
+    background-color: rgb(231, 55, 55);
+    color:white;
+    width:15rem;
+    height: 50px;
+    margin-top:2rem;
+    }
+
+
+
+
+
 
 
 .main_title{
@@ -157,6 +180,7 @@ body {
     background-size: 130%;
     background-position: center center;
     background-repeat: no-repeat;
+
 }
 
 .spinner_box {
@@ -177,6 +201,14 @@ body {
     height: 100%;
 }
 
+.card-mini-info {
+    padding-left:10px;
+}
+
+.card-mini-score {
+    margin-top:15px;
+}
+
 
 
 
@@ -194,23 +226,20 @@ body {
     width : 95%;
     background-size: 95%;
     background-repeat: no-repeat;
-    margin-top: 150px;
+    margin-top: 10rem;
     margin-right: 0px;
 }
 
 .title_box{
-    margin-top: 150px;
+    margin-top: 10rem;
 }
 
 .genre_btn{
-    /* margin-right: 15px; */
     margin-right: 1rem;
-    
 }
 
 .icon{
     display: inline-block;
-    /* margin-right: 10px; */
     margin-right: 1rem;
     color : rgb(233, 151, 0);
 }
@@ -271,9 +300,9 @@ body {
 
 
 .detail_btn{
-    width: 20%;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    width: 100px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
     
 }
 
@@ -303,7 +332,11 @@ padding-bottom: 10px;
 
 .relatedCard{
 
-margin : 20px 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+width : 100%;
+margin : 2rem 1rem;
 
 }
 

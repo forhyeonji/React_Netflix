@@ -77,9 +77,11 @@ const MovieDetail = () => {
               </Modal.Body>
             </Modal>
         </div>
+
+
       <Container>
         <Row>
-          <Col>
+          <Col lg={6}>
             <div
               className="detail_poster_box"
               style={{
@@ -92,7 +94,7 @@ const MovieDetail = () => {
           </Col>
 
 
-          <Col>
+          <Col lg={6}>
             <div className="title_box">
               {item.genre_ids.map((id) => (
                 <Badge pill bg="danger" className="genre_btn">
