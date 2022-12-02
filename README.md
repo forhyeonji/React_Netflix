@@ -1,7 +1,8 @@
 # 개인 프로젝트 영화 정보 사이트
 영화에 대한 디테일한 정보를 얻고 추천 받을 수 있다
 
-Axios를 통해 API를 요청하고 redux-toolkit으로 state를 다룸 (새로운 문법:createSlice, configureStore, dispatch)
+Axios를 통해 API를 요청하고 redux-toolkit으로 state를 다룸
+(새로운 문법:createSlice, configureStore, dispatch)
 react 훅과 react-bootstrap을 공부하기 좋았던 프로젝트
 
 Demo : [https://hyeonji-netflix.netlify.app/](https://hyeonji-netflix.netlify.app/)
